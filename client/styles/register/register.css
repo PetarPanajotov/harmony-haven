@@ -1,0 +1,77 @@
+/* main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+.register-form form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em 4em;
+    border-radius: 15px;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.2);
+}
+.register-form form input {
+    background-color: white;
+    outline: 2px solid #537178;
+    border-radius: 5px;
+    height: 2em;
+    font-size: 1.2em;
+    text-indent: 2.3em;
+    width: 15em;
+    transition: ease-out 0.2s;
+}
+input:-webkit-autofill {
+    -webkit-background-clip: text;
+}
+.register-form form input:focus {
+    outline: 2px solid #c5e0dc
+}
+.register-form form input:hover {
+    outline: 2px solid  #c5e0dc;
+}
+.register-form form label {
+    align-self: flex-start;
+    font-size: 1.2em;
+}   
+.register-form form label::after {
+    content: '*';
+    color: red;
+}
+.register-form form button {
+    margin-top: 3em;
+    background-color: #537178;
+    color: white;
+    padding: 0.4em 3em;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+.register-user-icon > svg {
+    height: 2em;
+    width: 2em;
+    fill: white;
+}
+.register-user-icon {
+    display: flex;
+    background-color: #537178;
+    padding: 0.5em;
+    border-radius: 50%;
+}
+.input-with-icon-wrapper {
+    position: relative
+}
+.input-with-icon-wrapper svg{
+    height: 1.5em;
+    width: 1.5em;
+    fill: white;
+}
+.input-icon {
+    position: absolute;
+    width: 2.5em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #537178;
+}
