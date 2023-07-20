@@ -1,8 +1,8 @@
 @import './reset.css';
 @import './layout.css';
-@import './navigation.css';
+@import './navigation/navigation.css';
+@import './footer/footer.css';
 @import './typography.css';
-@import './home/banner.css';
-@import './home/latest-offers.css';
-@import './footer.css';
+@import './home/home.css';
+@import './register/register.css'
 
