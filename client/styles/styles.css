@@ -1,0 +1,8 @@
+@import './reset.css';
+@import './layout.css';
+@import './navigation.css';
+@import './typography.css';
+@import './home/banner.css';
+@import './home/latest-offers.css';
+@import './footer.css';
+

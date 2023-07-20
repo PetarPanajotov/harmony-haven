@@ -1,0 +1,63 @@
+:root {
+    --primary-color: #537178;
+    --secondary-color: #c5e0dc;
+}
+header {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+.nav-container{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1em;
+    flex: 1 1 auto;
+}
+.logo svg {
+    fill: white;
+    height: 2.5em;
+}
+.links {    
+    display: flex;
+    margin-left: auto;
+}
+.links li {
+    display: block;
+}
+.links li a {
+    display: block;
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 1em;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.links li a:hover {
+    background-color: white;
+}
+.responsive-menu {
+    display: none;
+    fill: white;
+    height: 2.5em;
+}
+
+@media (width < 600px) {
+    .logo > h2 {
+        font-size: 1.4em;
+    }
+    .responsive-menu {
+        display: block;
+        margin-left: auto;
+        padding-right: 0.5em;
+    }
+    .links {
+        display: none;
+    }
+}
