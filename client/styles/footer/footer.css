@@ -1,8 +1,10 @@
+footer {
+    flex: 0 0 auto;
+}
 .footer-container {
     background-color: #537178;
     color: white;
     min-height: 8em;
-    margin-top: 5em;
 }
 .footer-container p {
     font-size: 1.2em;

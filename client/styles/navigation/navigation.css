@@ -2,7 +2,9 @@
     --primary-color: #537178;
     --secondary-color: #c5e0dc;
 }
+
 header {
+    flex: 0 0 auto;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     color: white;
 }

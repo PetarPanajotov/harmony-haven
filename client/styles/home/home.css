@@ -1,0 +1,7 @@
+@import './banner.css';
+@import './latest-offers.css';
+
+main {
+    flex: 1 1 auto;
+    margin-bottom: 5em;
+}
