@@ -1,0 +1,78 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+.login-form form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em 4em;
+    border-radius: 15px;
+    gap: 0.5em;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.2);
+}
+.login-user-icon {
+    display: flex;
+    background-color: #537178;
+    padding: 0.5em;
+    border-radius: 50%;
+}
+.login-user-icon > svg {
+    height: 2em;
+    width: 2em;
+    fill: white;
+}
+.input-with-icon-wrapper input {
+    background-color: rgba(0, 0, 0, 0.03);
+    outline: 2px solid #537178;
+    border-radius: 5px;
+    height: 2em;
+    font-size: 1.2em;
+    text-indent: 2.3em;
+    width: 15em;
+    transition: ease-out 0.2s;
+}
+.input-with-icon-wrapper {
+    position: relative;
+}
+.input-with-icon-wrapper svg{
+    height: 1.5em;
+    width: 1.5em;
+    fill: white;
+}
+.input-with-icon-wrapper .input-icon {
+    position: absolute;
+    width: 2.5em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #537178;
+}
+.input-with-icon-wrapper input:focus {
+    outline: 2px solid #c5e0dc
+}
+.input-with-icon-wrapper input:hover {
+    outline: 2px solid  #c5e0dc;
+}
+.login-form form label {
+    align-self: flex-start;
+    font-size: 1.2em;
+}
+.remember-me {
+    align-self: flex-start;
+}   
+#sign-up-link {
+    align-self: flex-start;
+}
+#sign-in-button {
+    margin-top: 1em;
+    background-color: #537178;
+    color: white;
+    padding: 0.4em 3em;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
