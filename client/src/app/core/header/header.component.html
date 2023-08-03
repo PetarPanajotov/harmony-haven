@@ -10,9 +10,9 @@
         </div>
         <ul class="links">
             <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/login">Login</a></li>
-            <li><a routerLink="/register">Sign up</a></li>
-            <li><a href="">Logout</a></li>
+            <li *ngIf ="!isLoggedIn"><a routerLink="/login">Login</a></li>
+            <li *ngIf ="!isLoggedIn"><a routerLink="/register">Sign up</a></li>
+            <li *ngIf ="isLoggedIn" (click)="logout()"><a>Logout</a></li>
             <li><a routerLink="/destinations">Offers</a></li>
         </ul>
         <svg xmlns="http://www.w3.org/2000/svg" class="responsive-menu"
