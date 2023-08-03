@@ -27,6 +27,7 @@ header {
 }
 .links li {
     display: block;
+    cursor: pointer;
 }
 .links li a {
     display: block;
