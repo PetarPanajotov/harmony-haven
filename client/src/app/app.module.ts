@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { tokenInterceptorProvider } from './core/interceptors/token.interceptor';
 import { CoreModule } from './core/core.module';
+import { DestinationCardComponent } from './shared/components/destination-card/destination-card.component';
+import { PopularFilterPipe } from './shared/pipes/popular-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { CoreModule } from './core/core.module';
     LoginComponent,
     DestinationsComponent,
     HotelsComponent,
+    DestinationCardComponent,
+    PopularFilterPipe,
   ],
   imports: [
     BrowserModule,
