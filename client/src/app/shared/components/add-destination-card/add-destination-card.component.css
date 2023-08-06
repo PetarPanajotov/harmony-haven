@@ -1,0 +1,15 @@
+.add-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 20em;
+    height: 25em;
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.add-card > svg {
+    fill: black;
+    width: 7em;
+    height: 7em;
+}

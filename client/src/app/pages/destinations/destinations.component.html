@@ -28,6 +28,7 @@
         </div>
         <div class="destinations-cards-wrapper">
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: true" [destination]="destination"></app-destination-card>
+            <app-add-destination-card></app-add-destination-card>
         </div>
         <div class="destinations-cards-title-wrapper">
             <div class="destinations-cards-title-border"></div>
@@ -36,6 +37,7 @@
         </div>
         <div class="destinations-cards-wrapper">
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: false" [destination]="destination"></app-destination-card>
+            <app-add-destination-card></app-add-destination-card>
         </div>
     </section>
 </main>
