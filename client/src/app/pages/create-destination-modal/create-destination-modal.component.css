@@ -1,0 +1,120 @@
+.create-destination-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-destination-modal-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 40em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.create-destination-modal-close {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.create-destination-modal-close>svg {
+    display: block;
+    fill: red;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+.create-destination-modal-title {
+    text-align: center;
+}
+
+.create-destination-label {
+    font-size: 1.2em;
+}
+
+.create-destination-label::after {
+    content: '*';
+    color: red;
+}
+
+.create-destination-input {
+    background-color: rgba(0, 0, 0, 0.03);
+    outline: 2px solid #537178;
+    border-radius: 5px;
+    height: 2em;
+    font-size: 1.2em;
+    text-indent: 2.3em;
+    width: 25em;
+    transition: ease-out 0.2s;
+}
+.create-destination-input:focus {
+    outline: 2px solid #c5e0dc
+}
+.create-destination-input:hover {
+    outline: 2px solid  #c5e0dc;
+}
+.create-destination-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.create-destination-input-with-icon {
+    position: relative;
+}
+
+.create-destination-input-with-icon svg {
+    height: 1.5em;
+    width: 1.5em;
+    fill: white;
+}
+
+.input-icon {
+    position: absolute;
+    width: 2.5em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #537178;
+}
+
+.create-destination-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em
+}
+
+#create-button,
+#cancel-button {
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #fff;
+    padding: 0.4em 3em;
+    margin: 1em 0;
+    cursor: pointer;
+}
+
+#create-button {
+    background-color: #537178;
+}
+#create-button:hover {
+    background-color: rgba(83, 113, 120, 0.8);
+}
+#cancel-button {
+    background-color: red;
+}
+#cancel-button:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+}

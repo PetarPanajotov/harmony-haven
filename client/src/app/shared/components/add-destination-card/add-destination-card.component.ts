@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
   selector: 'app-add-destination-card',
@@ -7,10 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-destination-card.component.css']
 })
 export class AddDestinationCardComponent { 
+  constructor(private modalService: ModalService) {}
 
-  constructor(private router: Router) {}
-
-  navigateToCreateDestination():void {
-    this.router.navigate(['/destinations/create'])
+  openCreateModal():void {
+    this.modalService.openModal()
   };
 };

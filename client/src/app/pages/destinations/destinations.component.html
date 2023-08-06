@@ -39,5 +39,6 @@
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: false" [destination]="destination"></app-destination-card>
             <app-add-destination-card></app-add-destination-card>
         </div>
+        <app-create-destination-modal *ngIf="modalService.modalStatus$ | async"></app-create-destination-modal>
     </section>
 </main>
