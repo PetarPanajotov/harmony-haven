@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
   selector: 'app-destination-card',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class DestinationCardComponent {
   @Input() destination: any;
+
+  constructor(private modalService: ModalService) {}
+  
+  openEditModal():void {
+    this.modalService.openModal()
+  };
 }

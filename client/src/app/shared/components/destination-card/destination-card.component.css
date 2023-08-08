@@ -1,5 +1,6 @@
 .destination-card-single {
     display: flex;
+    position: relative;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
@@ -21,6 +22,15 @@
     text-align: center;
     font-size: 1.2em;
     margin-top: auto;
+}
+.destination-card-single-edit-button {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+}
+.destination-card-single-edit-button > svg {
+    height: 1.5em;
+    fill: var(--primary-color-background);
 }
 .destination-card-single-location {
     display: flex;
