@@ -18,16 +18,17 @@
     max-width: 40em;
     display: flex;
     flex-direction: column;
+    position: relative;
     gap: 1em;
 }
 
 .create-destination-modal-close {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    position: absolute;
+    top: 1em;
+    right: 1em;
 }
 
-.create-destination-modal-close>svg {
+.create-destination-modal-close > svg {
     display: block;
     fill: red;
     height: 1.5em;
