@@ -14,7 +14,7 @@ import { CoreModule } from './core/core.module';
 import { DestinationCardComponent } from './shared/components/destination-card/destination-card.component';
 import { PopularFilterPipe } from './shared/pipes/popular-filter.pipe';
 import { AddDestinationCardComponent } from './shared/components/add-destination-card/add-destination-card.component';
-import { CreateDestinationModalComponent } from './pages/create-destination-modal/create-destination-modal.component';
+import { DestinationModalComponent } from './shared/components/destination-modal/destination-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { CreateDestinationModalComponent } from './pages/create-destination-moda
     DestinationCardComponent,
     PopularFilterPipe,
     AddDestinationCardComponent,
-    CreateDestinationModalComponent
+    DestinationModalComponent
   ],
   imports: [
     BrowserModule,
