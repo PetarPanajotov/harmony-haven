@@ -12,14 +12,18 @@ import { PopularFilterPipe } from 'src/app/shared/pipes/popular-filter.pipe';
 export class DestinationsComponent implements OnInit {
   destinationList: any = []
   constructor(private destinationService: DestinationService, public modalService: ModalService) { }
-  
+
   ngOnInit(): void {
     this.destinationService.getDestinations()
       .subscribe({
         next: (destinations) => {
           this.destinationList = destinations;
+          console.log(this.destinationList)
         }
-      })
+      });
+  };
+  onDestinationAdded(newDestination: any): void {
+    this.destinationList = [newDestination, ...this.destinationList];
+    console.log(this.destinationList)
   }
-
-}
+};
