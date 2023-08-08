@@ -12,3 +12,10 @@ exports.destinations = async(search) => {
     const allDestinations = await findAllDestinations();
     return allDestinations;
 }
+
+exports.createDestination = async(destinationName, destinationLocation, imgURL) => {
+    //validation
+    const newDestination = new Destination({destinationName, destinationLocation, imgURL});
+    await newDestination.save()
+    return newDestination;
+};

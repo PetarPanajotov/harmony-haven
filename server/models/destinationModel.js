@@ -14,7 +14,6 @@ const destinationSchema = new mongoose.Schema({
     imgURL: {
         type: String,
         require: true,
-        unique: true
     },
     offersCount: {
         type: Number
