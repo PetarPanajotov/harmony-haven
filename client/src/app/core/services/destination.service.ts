@@ -10,5 +10,17 @@ export class DestinationService {
 
   getDestinations() {
     return this.http.get('http://localhost:3000/destinations')
+  };
+
+  createDestination(
+    destinationName: string,
+    destinationLocation: string,
+    imgURL: string
+  ) {
+    return this.http.post<any>('http://localhost:3000/destinations', {
+      destinationName,
+      destinationLocation,
+      imgURL
+    })
   }
 }
