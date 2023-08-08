@@ -21,6 +21,11 @@ export class DestinationService {
       destinationName,
       destinationLocation,
       imgURL
-    })
-  }
-}
+    });
+  };
+  editDestination(
+    destinationName: string,
+    destinationLocation: string,
+    imgURL: string
+  ) {}
+};

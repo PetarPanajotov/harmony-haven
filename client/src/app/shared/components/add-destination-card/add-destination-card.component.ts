@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
@@ -6,10 +6,12 @@ import { ModalService } from 'src/app/core/services/modal.service';
   templateUrl: './add-destination-card.component.html',
   styleUrls: ['./add-destination-card.component.css']
 })
-export class AddDestinationCardComponent { 
-  constructor(private modalService: ModalService) {}
+export class AddDestinationCardComponent {
+  @Output() createDestinationClicked: EventEmitter<any> = new EventEmitter()
+  constructor(private modalService: ModalService) { }
 
-  openCreateModal():void {
+  onCreateClicked(): void {
+    this.createDestinationClicked.emit(true);
     this.modalService.openModal()
   };
 };

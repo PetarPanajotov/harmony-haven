@@ -11,19 +11,33 @@ import { PopularFilterPipe } from 'src/app/shared/pipes/popular-filter.pipe';
 })
 export class DestinationsComponent implements OnInit {
   destinationList: any = []
-  constructor(private destinationService: DestinationService, public modalService: ModalService) { }
+  editClicked: boolean = false;
+  createClicked: boolean = false;
+  
+  constructor(private destinationService: DestinationService, public modalService: ModalService) {
+    this.modalService.modalStatus$.subscribe(modalStatus => {
+      if (!modalStatus) {
+        this.editClicked = false;
+        this.createClicked = false;
+      }
+    });
+  };
 
   ngOnInit(): void {
     this.destinationService.getDestinations()
       .subscribe({
         next: (destinations) => {
           this.destinationList = destinations;
-          console.log(this.destinationList)
         }
       });
   };
   onDestinationAdded(newDestination: any): void {
     this.destinationList = [newDestination, ...this.destinationList];
-    console.log(this.destinationList)
+  };
+  onDestinationEdit(isClicked: boolean): void {
+    this.editClicked = isClicked;
+  };
+  onDestinationCreate(isClicked: boolean): void {
+    this.createClicked = isClicked;
   }
 };

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DestinationService } from 'src/app/core/services/destination.service';
 import { ModalService } from 'src/app/core/services/modal.service';
@@ -27,6 +27,7 @@ export class DestinationModalComponent implements OnInit {
 
   closeCreateModal(): void {
     this.modalService.closeModal();
+    this.isEditMode = false;
   };
 
   createDestination(): void {
