@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DestinationService } from 'src/app/core/services/destination.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { PopularFilterPipe } from 'src/app/shared/pipes/popular-filter.pipe';
@@ -9,19 +10,17 @@ import { PopularFilterPipe } from 'src/app/shared/pipes/popular-filter.pipe';
   styleUrls: ['./destinations.component.css'],
   providers: [PopularFilterPipe]
 })
-export class DestinationsComponent implements OnInit {
-  destinationList: any = []
-  editClicked: boolean = false;
-  createClicked: boolean = false;
-  
+export class DestinationsComponent implements OnInit, OnDestroy {
+  destinationList: any = [];
+  editDestinationData: any = {};
+  isEditing: boolean = false;
+  isCreating: boolean = false;
+
+  private modalStatusSubscription: Subscription = Subscription.EMPTY;
+
   constructor(private destinationService: DestinationService, public modalService: ModalService) {
-    this.modalService.modalStatus$.subscribe(modalStatus => {
-      if (!modalStatus) {
-        this.editClicked = false;
-        this.createClicked = false;
-      }
-    });
-  };
+    
+  }
 
   ngOnInit(): void {
     this.destinationService.getDestinations()
@@ -29,15 +28,31 @@ export class DestinationsComponent implements OnInit {
         next: (destinations) => {
           this.destinationList = destinations;
         }
-      });
+      })
+      this.modalStatusSubscription = this.modalService.modalStatus$.subscribe((modalStatus) => {
+        if (!modalStatus) {
+          this.isEditing = false;
+          this.isCreating = false;
+        }
+      });;
   };
+
+  ngOnDestroy(): void {
+    this.modalStatusSubscription.unsubscribe();
+  }
+
   onDestinationAdded(newDestination: any): void {
     this.destinationList = [newDestination, ...this.destinationList];
   };
-  onDestinationEdit(isClicked: boolean): void {
-    this.editClicked = isClicked;
+
+  onDestinationEdit(destinationData : boolean): void {
+    this.modalService.openModal();
+    this.editDestinationData = destinationData;
+    this.isEditing = !!destinationData; 
   };
+
   onDestinationCreate(isClicked: boolean): void {
-    this.createClicked = isClicked;
-  }
+    this.modalService.openModal();
+    this.isCreating = isClicked;
+  };
 };

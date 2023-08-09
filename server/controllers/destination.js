@@ -1,4 +1,4 @@
-const { destinations, createDestination } = require("../services/destinationService");
+const { destinations, createDestination, findDestination } = require("../services/destinationService");
 const { ErrorMessage } = require("../utils/errorHandlerUtils");
 
 exports.getDestinations = async (req, res) => {
@@ -15,12 +15,24 @@ exports.getDestinations = async (req, res) => {
 
 exports.postDestination = async (req, res) => {
     const { destinationName, destinationLocation, imgURL } = req.body;
-    const data = await createDestination(destinationName, destinationLocation, imgURL);
     try {
+        const data = await createDestination(destinationName, destinationLocation, imgURL);
         res.status(201)
             .send(data);
     } catch (error) {
         res.status(400)
-            .send(ErrorMessage(error))
-    }
-}
+            .send(ErrorMessage(error));
+    };
+};
+
+exports.getOneDestination = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const data = await findDestination(id);
+        res.status(200)
+            .send(data);
+    } catch(error) {
+        res.status(404)
+            .send(ErrorMessage(error));
+    };
+};

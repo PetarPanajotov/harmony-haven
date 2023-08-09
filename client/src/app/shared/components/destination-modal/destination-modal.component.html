@@ -1,7 +1,7 @@
 <div class="create-destination-modal-container">
     <div class="create-destination-modal-wrapper">
         <div class="create-destination-modal-close">
-            <svg xmlns="http://www.w3.org/2000/svg" (click)="closeCreateModal()"
+            <svg xmlns="http://www.w3.org/2000/svg" (click)="closeDestinationModal()"
                 viewBox="0 0 384
             512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                 <path
@@ -52,8 +52,8 @@
                 </div>
             </div>
             <div class="create-destination-buttons">
-                <button id="create-button">Create</button>
-                <button id="cancel-button" (click)="closeCreateModal()">Cancel</button>
+                <button id="create-button" type="submit">Create</button>
+                <button id="cancel-button" (click)="closeDestinationModal()">Cancel</button>
             </div>
         </form>
     </div>

@@ -1,7 +1,8 @@
 const Destination = require('../models/destinationModel');
 
-const findAllDestinations = () => Destination.find({})
-const findMatchingDestinations = (query) => Destination.find({destinationName: { $regex: query, $options: 'i' } })
+const findAllDestinations = () => Destination.find({});
+const findMatchingDestinations = (query) => Destination.find({destinationName: { $regex: query, $options: 'i' } });
+const findDestinationById = (destinationId) => Destination.findById(destinationId);
 
 exports.destinations = async(search) => {
     if(search['search']) {
@@ -19,3 +20,8 @@ exports.createDestination = async(destinationName, destinationLocation, imgURL) 
     await newDestination.save()
     return newDestination;
 };
+
+exports.findDestination = async(destinationId) => {
+    const oneDestination = await findDestinationById(destinationId);
+    return oneDestination;
+}

@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DestinationService } from 'src/app/core/services/destination.service';
 import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
@@ -8,12 +9,13 @@ import { ModalService } from 'src/app/core/services/modal.service';
 })
 export class DestinationCardComponent {
   @Input() destination: any;
-  @Output() editDestinationClicked: EventEmitter<any> = new EventEmitter();
+  @Output() detinationData: EventEmitter<any> = new EventEmitter();
 
-  constructor(private modalService: ModalService) { }
+  constructor(private destinationService: DestinationService) { }
 
   onEditClicked(): void {
-    this.editDestinationClicked.emit(true);
-    this.modalService.openModal();
+    const destinationId = this.destination._id;
+    this.destinationService.getDestinationById(destinationId)
+      .subscribe((destinationData) => this.detinationData.emit(destinationData));
   };
 };

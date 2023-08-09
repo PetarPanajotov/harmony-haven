@@ -12,20 +12,30 @@ import { ModalService } from 'src/app/core/services/modal.service';
 
 export class DestinationModalComponent implements OnInit {
   @Input() isEditMode: boolean = false;
+  @Input() editDestinationData: any = undefined;
   @Output() destinationAdded: EventEmitter<any> = new EventEmitter();
-  destinationForm:any = [];
+  destinationForm: any = [];
 
   ngOnInit(): void {
-    this.destinationForm = new FormGroup({
-      destinationName: new FormControl(''),
-      destinationLocation: new FormControl(''),
-      imgURL: new FormControl('')
-    }); 
+    console.log(this.editDestinationData)
+    if (!this.isEditMode) {
+      this.destinationForm = new FormGroup({
+        destinationName: new FormControl(''),
+        destinationLocation: new FormControl(''),
+        imgURL: new FormControl('')
+      })
+    } else {
+      this.destinationForm = new FormGroup({
+        destinationName: new FormControl(this.editDestinationData.destinationName),
+        destinationLocation: new FormControl(this.editDestinationData.destinationLocation),
+        imgURL: new FormControl(this.editDestinationData.imgURL)
+      })
+    };
   }
   constructor(private modalService: ModalService, private destinationService: DestinationService) { };
 
 
-  closeCreateModal(): void {
+  closeDestinationModal(): void {
     this.modalService.closeModal();
     this.isEditMode = false;
   };

@@ -28,7 +28,7 @@
         </div>
         <div class="destinations-cards-wrapper">
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: true"
-                [destination]="destination" (editDestinationClicked)="onDestinationEdit($event)"></app-destination-card>
+                [destination]="destination" (detinationData)="onDestinationEdit($event)"></app-destination-card>
             <app-add-destination-card (createDestinationClicked)="onDestinationCreate($event)"></app-add-destination-card>
         </div>
         <div class="destinations-cards-title-wrapper">
@@ -38,15 +38,15 @@
         </div>
         <div class="destinations-cards-wrapper">
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: false"
-                [destination]="destination"></app-destination-card>
-            <app-add-destination-card></app-add-destination-card>
+                [destination]="destination" (detinationData)="onDestinationEdit($event)"></app-destination-card>
+            <app-add-destination-card (createDestinationClicked)="onDestinationCreate($event)"></app-add-destination-card>
         </div>
-        <ng-container *ngIf="(modalService.modalStatus$ | async) && createClicked; else editModal">
+        <ng-container *ngIf="(modalService.modalStatus$ | async) && isCreating; else editModal">
             <app-destination-modal (destinationAdded)="onDestinationAdded($event)"/>
           </ng-container>
           
           <ng-template #editModal> 
-                <app-destination-modal *ngIf="(modalService.modalStatus$ | async) && editClicked" [isEditMode]="editClicked"/>
+                <app-destination-modal *ngIf="(modalService.modalStatus$ | async) && isEditing" [isEditMode]="isEditing" [editDestinationData]="editDestinationData"/>
           </ng-template>
     </section>
 </main>
