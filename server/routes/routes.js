@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { postRegister, postLogin, getMe, postLogout } = require('../controllers/auth');
-const { getDestinations, postDestination, getOneDestination } = require('../controllers/destination');
+const { getDestinations, postDestination, getOneDestination, putEditDestination } = require('../controllers/destination');
 
 const router = Router();
 
@@ -11,6 +11,7 @@ router.get('/me', getMe);
 
 router.get('/destinations', getDestinations);
 router.get('/destinations/:id', getOneDestination);
+router.put('/destinations/:id', putEditDestination);
 router.post('/destinations', postDestination);
 
 module.exports = router;

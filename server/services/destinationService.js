@@ -3,6 +3,7 @@ const Destination = require('../models/destinationModel');
 const findAllDestinations = () => Destination.find({});
 const findMatchingDestinations = (query) => Destination.find({destinationName: { $regex: query, $options: 'i' } });
 const findDestinationById = (destinationId) => Destination.findById(destinationId);
+const findAndEditDestination = (destiantionId, destinationName, destinationLocation, imgURL) => Destination.findByIdAndUpdate(destiantionId, {destinationName, destinationLocation, imgURL}, {new:true})
 
 exports.destinations = async(search) => {
     if(search['search']) {
@@ -24,4 +25,9 @@ exports.createDestination = async(destinationName, destinationLocation, imgURL) 
 exports.findDestination = async(destinationId) => {
     const oneDestination = await findDestinationById(destinationId);
     return oneDestination;
+};
+
+exports.editDestination = async (destinationId, destinationName, destinationLocation, imgURL) => {
+    const editedDestination = await findAndEditDestination(destinationId, destinationName, destinationLocation, imgURL);
+    return editedDestination;
 }
