@@ -14,10 +14,10 @@ export class DestinationModalComponent implements OnInit {
   @Input() isEditMode: boolean = false;
   @Input() editDestinationData: any = undefined;
   @Output() destinationAdded: EventEmitter<any> = new EventEmitter();
+  @Output() destinationEdited: EventEmitter<any> = new EventEmitter();
   destinationForm: any = [];
 
   ngOnInit(): void {
-    console.log(this.editDestinationData)
     if (!this.isEditMode) {
       this.destinationForm = new FormGroup({
         destinationName: new FormControl(''),
@@ -53,4 +53,19 @@ export class DestinationModalComponent implements OnInit {
         this.modalService.closeModal();
       });
   };
-}
+
+  editDestination(): void {
+    const {
+      destinationName,
+      destinationLocation,
+      imgURL
+    } = this.destinationForm.value;
+
+    const destinationId = this.editDestinationData._id;
+    this.destinationService.editDestination(destinationId!, destinationName!, destinationLocation!, imgURL!)
+      .subscribe((destination) => {
+        this.destinationEdited.emit(destination);
+        this.modalService.closeModal();
+      }); 
+  };
+};

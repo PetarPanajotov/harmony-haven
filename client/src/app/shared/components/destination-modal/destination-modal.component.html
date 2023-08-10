@@ -11,7 +11,7 @@
         <h3 class="create-destination-modal-title">
             {{ isEditMode ? 'Edit Destination' : 'Create Destination' }}
         </h3>
-        <form [formGroup]="destinationForm" (ngSubmit)="createDestination()">
+        <form [formGroup]="destinationForm" (ngSubmit)="isEditMode? editDestination(): createDestination()">
             <div class="create-destination-input-wrapper">
                 <label for="destination-name" class="create-destination-label">Destination Name</label>
                 <div class="create-destination-input-with-icon">
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="create-destination-buttons">
-                <button id="create-button" type="submit">Create</button>
+                <button id="create-button" type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
                 <button id="cancel-button" (click)="closeDestinationModal()">Cancel</button>
             </div>
         </form>

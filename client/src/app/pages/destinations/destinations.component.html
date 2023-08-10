@@ -46,7 +46,7 @@
           </ng-container>
           
           <ng-template #editModal> 
-                <app-destination-modal *ngIf="(modalService.modalStatus$ | async) && isEditing" [isEditMode]="isEditing" [editDestinationData]="editDestinationData"/>
+                <app-destination-modal *ngIf="(modalService.modalStatus$ | async) && isEditing" [isEditMode]="isEditing" [editDestinationData]="editDestinationData" (destinationEdited)="onDestinationEdited($event)"/>
           </ng-template>
     </section>
 </main>

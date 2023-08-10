@@ -26,10 +26,17 @@ export class DestinationService {
   getDestinationById(destinationId: string) {
     return this.http.get(`http://localhost:3000/destinations/${destinationId}`)
   };
-  
+
   editDestination(
+    destinationId: string,
     destinationName: string,
     destinationLocation: string,
-    imgURL: string
-  ) {}
+    imgURL: string,
+  ) {
+    return this.http.put<any>(`http://localhost:3000/destinations/${destinationId}`, {
+      destinationName,
+      destinationLocation,
+      imgURL
+    });
+  };
 };
