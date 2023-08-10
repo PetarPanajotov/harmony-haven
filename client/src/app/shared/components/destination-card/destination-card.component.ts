@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DestinationService } from 'src/app/core/services/destination.service';
-import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
   selector: 'app-destination-card',

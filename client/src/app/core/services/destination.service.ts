@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Destination } from '../types/destination';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DestinationService {
-  destinationList: any = []
+  
   constructor(private http: HttpClient) { }
 
   getDestinations() {
@@ -24,7 +25,7 @@ export class DestinationService {
     });
   };
   getDestinationById(destinationId: string) {
-    return this.http.get(`http://localhost:3000/destinations/${destinationId}`)
+    return this.http.get<Destination>(`http://localhost:3000/destinations/${destinationId}`)
   };
 
   editDestination(

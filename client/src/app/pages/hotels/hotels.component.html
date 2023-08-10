@@ -1,10 +1,10 @@
 <main>
-    <section class="destination-selected-banner">
+    <section class="destination-selected-banner" *ngIf="destination">
         <div class="destination-selected-banner-img">
-            <img src="https://images.unsplash.com/flagged/photo-1559717201-fbb671ff56b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
+            <img src={{destination.imgURL}}
                 alt="">
         </div>
-        <h2>Dubai</h2>
+        <h2>{{destination.destinationName}}</h2>
         <div class="destination-selected-hotels-fillter-wrapper">
             <div class="destination-selected-hotels-fillter-type">
                 <h4>Type</h4>
