@@ -12,6 +12,7 @@ import { PopularFilterPipe } from 'src/app/shared/pipes/popular-filter.pipe';
 })
 export class DestinationsComponent implements OnInit, OnDestroy {
   destinationList: any = [];
+  destinationDataToEdit: any
   isEditing = false;
   isCreating = false;
 
@@ -41,19 +42,13 @@ export class DestinationsComponent implements OnInit, OnDestroy {
     this.modalStatusSubscription.unsubscribe();
   };
 
-  onDestinationAdded(newDestination: any): void {
-    this.destinationList = [newDestination, ...this.destinationList];
-  };
-
-  onDestinationEdited(editDestination: any): void {
-    this.destinationList = this.destinationList.map((destination: any) =>
-      destination._id === editDestination._id ? editDestination : destination
-    );
-  };
+  handleDestinationListUpdate(updatedList: any[]): void{
+    this.destinationList = updatedList;
+  }
 
   onDestinationEdit(destinationData: any): void {
     this.modalService.openModal();
-    this.destinationService.destinationData = destinationData;
+    this.destinationDataToEdit = destinationData;
     this.isEditing = !!destinationData;
   };
 

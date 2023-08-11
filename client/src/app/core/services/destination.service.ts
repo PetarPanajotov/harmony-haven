@@ -6,16 +6,8 @@ import { Destination } from '../types/destination';
   providedIn: 'root'
 })
 export class DestinationService {
-  destination: Destination | undefined;
+
   constructor(private http: HttpClient) { }
-
-  get destinationData() {
-    return this.destination;
-  }
-
-  set destinationData(data) {
-    this.destination = data
-  }
   
   getDestinations() {
     return this.http.get('http://localhost:3000/destinations')
@@ -48,4 +40,24 @@ export class DestinationService {
       imgURL
     });
   };
+  createHotel(
+    destinationId: string,
+    hotelName: string,
+    hotelLocation: string,
+    imgURL: string,
+    stars: number,
+    type: string,
+    rating: number,
+    freeDate: number
+  ) {
+    return this.http.post<any>(`http://localhost:3000/${destinationId}/hotels`, {
+      hotelName,
+      hotelLocation,
+      imgURL,
+      stars,
+      type,
+      rating,
+      freeDate
+    })
+  }
 };

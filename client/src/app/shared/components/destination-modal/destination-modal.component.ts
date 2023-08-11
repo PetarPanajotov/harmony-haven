@@ -12,19 +12,18 @@ import { ModalService } from 'src/app/core/services/modal.service';
 
 export class DestinationModalComponent implements OnInit {
   @Input() isEditMode: boolean = false;
-  @Output() destinationAdded: EventEmitter<any> = new EventEmitter();
-  @Output() destinationEdited: EventEmitter<any> = new EventEmitter();
+  @Input() destinationList: any;
+  @Input() destinationDataToEdit: any;
+  @Output() destinationListUpdated: EventEmitter<any> = new EventEmitter();
   destinationForm: any = [];
 
   constructor(private modalService: ModalService, private destinationService: DestinationService) { };
 
-  destinationData = this.destinationService.destinationData!;
-
   ngOnInit(): void {
     this.destinationForm = new FormGroup({
-      destinationName: new FormControl(this.isEditMode ? this.destinationData.destinationName : ""),
-      destinationLocation: new FormControl(this.isEditMode ? this.destinationData.destinationLocation : ""),
-      imgURL: new FormControl(this.isEditMode ? this.destinationData.imgURL : "")
+      destinationName: new FormControl(this.isEditMode ? this.destinationDataToEdit.destinationName : ""),
+      destinationLocation: new FormControl(this.isEditMode ? this.destinationDataToEdit.destinationLocation : ""),
+      imgURL: new FormControl(this.isEditMode ? this.destinationDataToEdit.imgURL : "")
     })
   }
 
@@ -41,8 +40,9 @@ export class DestinationModalComponent implements OnInit {
     } = this.destinationForm.value;
 
     this.destinationService.createDestination(destinationName!, destinationLocation!, imgURL!)
-      .subscribe((destination) => {
-        this.destinationAdded.emit(destination)
+      .subscribe((createdDestination) => {
+        this.destinationList = [createdDestination, ...this.destinationList];
+        this.destinationListUpdated.emit(this.destinationList);
         this.modalService.closeModal();
       });
   };
@@ -54,10 +54,12 @@ export class DestinationModalComponent implements OnInit {
       imgURL
     } = this.destinationForm.value;
 
-    const destinationId = this.destinationData!._id;
+    const destinationId = this.destinationDataToEdit!._id;
     this.destinationService.editDestination(destinationId!, destinationName!, destinationLocation!, imgURL!)
-      .subscribe((destination) => {
-        this.destinationEdited.emit(destination);
+      .subscribe((editDestination) => {
+        this.destinationList = this.destinationList.map((destination: any) =>
+        destination._id === editDestination._id ? editDestination : destination);
+        this.destinationListUpdated.emit(this.destinationList);
         this.modalService.closeModal();
       });
   };

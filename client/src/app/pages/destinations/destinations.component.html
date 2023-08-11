@@ -28,8 +28,12 @@
         </div>
         <div class="destinations-cards-wrapper">
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: true"
-                [destination]="destination" (detinationData)="onDestinationEdit($event)"></app-destination-card>
-            <app-add-destination-card (createDestinationClicked)="onDestinationCreate($event)"></app-add-destination-card>
+                [destination]="destination"
+                (detinationData)="onDestinationEdit($event)">
+            </app-destination-card>
+            <app-add-destination-card
+                (createDestinationClicked)="onDestinationCreate($event)">
+            </app-add-destination-card>
         </div>
         <div class="destinations-cards-title-wrapper">
             <div class="destinations-cards-title-border"></div>
@@ -39,14 +43,23 @@
         <div class="destinations-cards-wrapper">
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: false"
                 [destination]="destination" (detinationData)="onDestinationEdit($event)"></app-destination-card>
-            <app-add-destination-card (createDestinationClicked)="onDestinationCreate($event)"></app-add-destination-card>
+            <app-add-destination-card
+                (createDestinationClicked)="onDestinationCreate($event)"></app-add-destination-card>
         </div>
         <ng-container *ngIf="(modalService.modalStatus$ | async) && isCreating; else editModal">
-            <app-destination-modal (destinationAdded)="onDestinationAdded($event)"/>
-          </ng-container>
-          
-          <ng-template #editModal> 
-                <app-destination-modal *ngIf="(modalService.modalStatus$ | async) && isEditing" [isEditMode]="isEditing" (destinationEdited)="onDestinationEdited($event)"/>
-          </ng-template>
+            <app-destination-modal
+                (destinationListUpdated)="handleDestinationListUpdate($event)"
+                [destinationList]="destinationList">
+            </app-destination-modal>
+        </ng-container>
+
+        <ng-template #editModal>
+            <app-destination-modal *ngIf="(modalService.modalStatus$ | async) && isEditing"
+                [isEditMode]="isEditing"
+                (destinationListUpdated)="handleDestinationListUpdate($event)"
+                [destinationList]="destinationList"
+                [destinationDataToEdit]="destinationDataToEdit">
+            </app-destination-modal>
+        </ng-template>
     </section>
 </main>
