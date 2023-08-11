@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DestinationService } from 'src/app/core/services/destination.service';
+import { ModalService } from 'src/app/core/services/modal.service';
+import { Destination } from 'src/app/core/types/destination';
 
 @Component({
   selector: 'app-hotels',
@@ -8,10 +10,9 @@ import { DestinationService } from 'src/app/core/services/destination.service';
   styleUrls: ['./hotels.component.css']
 })
 export class HotelsComponent implements OnInit {
-  destination = this.destinationService.destinationData;
+  destination: Destination | undefined;
+  constructor(private route: ActivatedRoute, private destinationService: DestinationService, public modalService: ModalService) { }
   
-  constructor(private route: ActivatedRoute, private destinationService: DestinationService) { }
-
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id: string | null = params.get('id');

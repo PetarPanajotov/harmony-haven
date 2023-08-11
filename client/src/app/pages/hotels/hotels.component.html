@@ -21,6 +21,7 @@
         </div>
     </section>
     <section class="destination-selected-hotel-cards-wrapper">
+        <app-add-destination-card />
         <div class="destination-selected-hotel-card">
             <img src="https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI="
                 alt="">
@@ -115,4 +116,5 @@
             </div>
         </div>
     </section>
+    <app-hotel-modal *ngIf="(modalService.modalStatus$ | async)" [destinationId]='destination?._id'/>
 </main>
