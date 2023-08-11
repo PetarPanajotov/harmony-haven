@@ -12,7 +12,6 @@ import { PopularFilterPipe } from 'src/app/shared/pipes/popular-filter.pipe';
 })
 export class DestinationsComponent implements OnInit, OnDestroy {
   destinationList: any = [];
-  editDestinationData: any = {};
   isEditing = false;
   isCreating = false;
 
@@ -54,7 +53,7 @@ export class DestinationsComponent implements OnInit, OnDestroy {
 
   onDestinationEdit(destinationData: any): void {
     this.modalService.openModal();
-    this.editDestinationData = destinationData;
+    this.destinationService.destinationData = destinationData;
     this.isEditing = !!destinationData;
   };
 

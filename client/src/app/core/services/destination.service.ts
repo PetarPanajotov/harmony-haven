@@ -6,9 +6,17 @@ import { Destination } from '../types/destination';
   providedIn: 'root'
 })
 export class DestinationService {
-  
+  destination: Destination | undefined;
   constructor(private http: HttpClient) { }
 
+  get destinationData() {
+    return this.destination;
+  }
+
+  set destinationData(data) {
+    this.destination = data
+  }
+  
   getDestinations() {
     return this.http.get('http://localhost:3000/destinations')
   };
