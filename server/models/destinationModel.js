@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema.Types
 
 const destinationSchema = new mongoose.Schema({
     destinationName: {
@@ -15,9 +16,10 @@ const destinationSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    offersCount: {
-        type: Number
-    },
+    hotels: [{
+        type: ObjectId,
+        ref: "Hotel"
+    }],
     popular: {
         type: Boolean
     }
