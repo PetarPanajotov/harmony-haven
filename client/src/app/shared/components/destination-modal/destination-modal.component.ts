@@ -12,28 +12,21 @@ import { ModalService } from 'src/app/core/services/modal.service';
 
 export class DestinationModalComponent implements OnInit {
   @Input() isEditMode: boolean = false;
-  @Input() editDestinationData: any = undefined;
   @Output() destinationAdded: EventEmitter<any> = new EventEmitter();
   @Output() destinationEdited: EventEmitter<any> = new EventEmitter();
   destinationForm: any = [];
 
-  ngOnInit(): void {
-    if (!this.isEditMode) {
-      this.destinationForm = new FormGroup({
-        destinationName: new FormControl(''),
-        destinationLocation: new FormControl(''),
-        imgURL: new FormControl('')
-      })
-    } else {
-      this.destinationForm = new FormGroup({
-        destinationName: new FormControl(this.editDestinationData.destinationName),
-        destinationLocation: new FormControl(this.editDestinationData.destinationLocation),
-        imgURL: new FormControl(this.editDestinationData.imgURL)
-      })
-    };
-  }
   constructor(private modalService: ModalService, private destinationService: DestinationService) { };
 
+  destinationData = this.destinationService.destinationData!;
+
+  ngOnInit(): void {
+    this.destinationForm = new FormGroup({
+      destinationName: new FormControl(this.isEditMode ? this.destinationData.destinationName : ""),
+      destinationLocation: new FormControl(this.isEditMode ? this.destinationData.destinationLocation : ""),
+      imgURL: new FormControl(this.isEditMode ? this.destinationData.imgURL : "")
+    })
+  }
 
   closeDestinationModal(): void {
     this.modalService.closeModal();
@@ -61,11 +54,11 @@ export class DestinationModalComponent implements OnInit {
       imgURL
     } = this.destinationForm.value;
 
-    const destinationId = this.editDestinationData._id;
+    const destinationId = this.destinationData!._id;
     this.destinationService.editDestination(destinationId!, destinationName!, destinationLocation!, imgURL!)
       .subscribe((destination) => {
         this.destinationEdited.emit(destination);
         this.modalService.closeModal();
-      }); 
+      });
   };
 };
