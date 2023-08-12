@@ -8,8 +8,11 @@ import { Destination } from '../types/destination';
 export class DestinationService {
 
   constructor(private http: HttpClient) { }
-  
-  getDestinations() {
+
+  getDestinations(searchQuery?: string) {
+    if (searchQuery) {
+      return this.http.get(`http://localhost:3000/destinations?search=${searchQuery}`)
+    }
     return this.http.get('http://localhost:3000/destinations')
   };
 
@@ -40,6 +43,12 @@ export class DestinationService {
       imgURL
     });
   };
+  deleteDestination(
+    destinationId: string
+  ) {
+    return this.http.delete<any>(`http://localhost:3000/destinations/${destinationId}`)
+  }
+
   createHotel(
     destinationId: string,
     hotelName: string,
