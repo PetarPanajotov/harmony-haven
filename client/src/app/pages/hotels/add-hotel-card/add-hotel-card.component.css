@@ -1,0 +1,14 @@
+.add-hotel-card {
+    width: 20em;
+    height: 27em;
+    box-shadow: 0 0 2em rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.add-hotel-card > svg {
+    fill: black;
+    width: 7em;
+    height: 7em;
+}
