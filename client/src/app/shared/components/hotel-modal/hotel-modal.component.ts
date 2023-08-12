@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DestinationService } from 'src/app/core/services/destination.service';
+import { Destination } from 'src/app/core/types/destination';
 
 @Component({
   selector: 'app-hotel-modal',
@@ -9,8 +10,10 @@ import { DestinationService } from 'src/app/core/services/destination.service';
   styleUrls: ['./hotel-modal.component.css']
 })
 export class HotelModalComponent implements OnInit {
-  @Input() destinationId: string | undefined;
+  @Input() destination: Destination | undefined;
+  @Output() hotelListUpdated: EventEmitter<any> = new EventEmitter()
   hotelForm: any;
+
   constructor(private modalService: ModalService, private destinationService: DestinationService) { }
 
   ngOnInit(): void {
@@ -37,8 +40,13 @@ export class HotelModalComponent implements OnInit {
       type,
       rating,
       freeDate
-    } = this.hotelForm.value
-    this.destinationService.createHotel(this.destinationId!, hotelName!, hotelLocation!, imgURL!, stars!, type!, rating!, freeDate!)
-      .subscribe((hotel) => console.log(hotel))
+    } = this.hotelForm.value;
+
+    this.destinationService.createHotel(this.destination?._id!, hotelName!, hotelLocation!, imgURL!, stars!, type!, rating!, freeDate!)
+      .subscribe((createdHotel) => {
+        this.destination!.hotels = [createdHotel, ...this.destination?.hotels];
+        this.hotelListUpdated.emit(this.destination);
+        this.modalService.closeModal();
+      });
   };
 }
