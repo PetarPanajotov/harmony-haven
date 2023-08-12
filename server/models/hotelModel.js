@@ -28,7 +28,7 @@ const hotelSchema = new mongoose.Schema({
         required: true
     },
     freeDate: {
-        type: Date,
+        type: Number,
     }
 });
 module.exports = mongoose.model('Hotel', hotelSchema)

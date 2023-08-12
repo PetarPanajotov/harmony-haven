@@ -1,11 +1,9 @@
-const { createHotel } = require("../services/hotelService");
+const { createHotel, hotels } = require("../services/hotelService");
 const { ErrorMessage } = require("../utils/errorHandlerUtils");
 
 exports.postHotel = async (req, res) => {
     const { id } = req.params;
     const { hotelName, hotelLocation, imgURL, stars, type, rating, freeDate } = req.body;
-    console.log(id)
-    console.log(hotelName, hotelLocation, imgURL, stars, type, rating, freeDate)
     try {
         const data = await createHotel(id, hotelName, hotelLocation, imgURL, stars, type, rating, freeDate);
         res.status(201)
@@ -15,3 +13,15 @@ exports.postHotel = async (req, res) => {
             .send(ErrorMessage(error));
     };
 };
+
+exports.getHotels = async (req,res) => {
+    const { id } = req.params;
+    try {
+        const data = await hotels(id)
+        res.status(200)
+            .send(data)
+    } catch(error) {
+        res.status(404)
+            .send(ErrorMessage(error))
+    }
+}
