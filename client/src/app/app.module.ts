@@ -7,7 +7,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DestinationsComponent } from './pages/destinations/destinations.component';
 import { HotelsComponent } from './pages/hotels/hotels.component';
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { tokenInterceptorProvider } from './core/interceptors/token.interceptor';
 import { CoreModule } from './core/core.module';
@@ -16,7 +16,10 @@ import { PopularFilterPipe } from './shared/pipes/popular-filter.pipe';
 import { AddDestinationCardComponent } from './shared/components/add-destination-card/add-destination-card.component';
 import { DestinationModalComponent } from './shared/components/destination-modal/destination-modal.component';
 import { HotelModalComponent } from './shared/components/hotel-modal/hotel-modal.component';
-import { HotelCardComponent } from './shared/components/hotel-card/hotel-card.component';
+import { HotelCardComponent } from './pages/hotels/hotel-card/hotel-card.component';
+import { AddHotelCardComponent } from './pages/hotels/add-hotel-card/add-hotel-card.component';
+import { SearchComponent } from './pages/destinations/search/search.component';
+import { DeleteIconComponent } from './shared/components/destination-card/delete-icon/delete-icon.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +35,14 @@ import { HotelCardComponent } from './shared/components/hotel-card/hotel-card.co
     DestinationModalComponent,
     HotelModalComponent,
     HotelCardComponent,
+    AddHotelCardComponent,
+    SearchComponent,
+    DeleteIconComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     CoreModule
