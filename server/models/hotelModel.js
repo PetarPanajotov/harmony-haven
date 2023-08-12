@@ -9,7 +9,6 @@ const hotelSchema = new mongoose.Schema({
     hotelLocation: {
         type: String,
         required: true,
-        unique: true
     },
     imgURL: {
         type: String,
