@@ -60,4 +60,10 @@ export class DestinationService {
       freeDate
     })
   }
+  getHotels(
+    destinationId: string
+  ) {
+    return this.http.get<any>(`http://localhost:3000/${destinationId}/hotels`)
+  };
 };
+
