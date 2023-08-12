@@ -23,7 +23,8 @@
     <section class="destination-selected-hotel-cards-wrapper">
         <app-add-hotel-card />
         <app-hotel-card *ngFor="let hotel of destination?.hotels"
-            [hotel]="hotel" />
+            [hotel]="hotel"
+         />
     </section>
     <app-hotel-modal *ngIf="(modalService.modalStatus$ | async)"
      [destination]="destination"
