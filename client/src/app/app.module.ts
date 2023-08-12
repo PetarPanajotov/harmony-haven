@@ -16,6 +16,7 @@ import { PopularFilterPipe } from './shared/pipes/popular-filter.pipe';
 import { AddDestinationCardComponent } from './shared/components/add-destination-card/add-destination-card.component';
 import { DestinationModalComponent } from './shared/components/destination-modal/destination-modal.component';
 import { HotelModalComponent } from './shared/components/hotel-modal/hotel-modal.component';
+import { HotelCardComponent } from './shared/components/hotel-card/hotel-card.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HotelModalComponent } from './shared/components/hotel-modal/hotel-modal
     AddDestinationCardComponent,
     DestinationModalComponent,
     HotelModalComponent,
+    HotelCardComponent,
   ],
   imports: [
     BrowserModule,
