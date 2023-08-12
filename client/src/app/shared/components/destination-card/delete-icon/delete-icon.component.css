@@ -1,0 +1,10 @@
+.destination-card-single-delete-button {
+    position: absolute;
+    bottom: 1%;
+    right: 12%;
+}
+.destination-card-single-delete-button > svg {
+    display: block;
+    height: 1.5em;
+    fill: red;
+}

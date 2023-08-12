@@ -9,16 +9,32 @@ import { DestinationService } from 'src/app/core/services/destination.service';
 })
 export class DestinationCardComponent {
   @Input() destination: any;
+  @Input() destinationList: any;
   @Output() detinationData: EventEmitter<any> = new EventEmitter();
+  @Output() destinationListUpdated: EventEmitter<any> = new EventEmitter()
 
   constructor(private destinationService: DestinationService) { }
+
   onEditClicked(event: Event): void {
     //to prevent from routing;
     event.stopPropagation();
     event.preventDefault();
-    
+
     const destinationId = this.destination._id;
     this.destinationService.getDestinationById(destinationId)
       .subscribe((destinationData) => this.detinationData.emit(destinationData));
+  };
+
+  onDeleteClicked(event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const destinationId = this.destination._id;
+    this.destinationService.deleteDestination(destinationId)
+      .subscribe((destinationData) => {
+        this.destinationList = this.destinationList.filter((destination: any) => destination._id !== destinationData._id);
+        console.log(this.destinationList)
+        this.destinationListUpdated.emit(this.destinationList)
+      });
   };
 };
