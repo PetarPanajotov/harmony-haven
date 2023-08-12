@@ -19,4 +19,8 @@ export class HotelsComponent implements OnInit {
         this.destinationService.getHotels(id!).subscribe((destination) => this.destination = destination)
     });
   };
+
+  handleHotelListUpdate(updatedListHotels: any) {
+    this.destination = updatedListHotels;
+  };
 };
