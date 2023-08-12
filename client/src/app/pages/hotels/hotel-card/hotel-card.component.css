@@ -3,6 +3,7 @@
 }
 .destination-selected-hotel-card {
     width: 20em;
+    height: 27em;
     box-shadow: 0 0 2em rgba(0,0,0,0.2);
     position: relative;;
 }
