@@ -17,6 +17,6 @@
             <p>{{hotel.rating}}</p>
             <p>Excellent</p>
         </div>
-        <button class="destination-selected-hotel-card-details">Check details</button>
+        <button [routerLink]="[hotel.hotelName, hotel._id]" class="destination-selected-hotel-card-details">Check details</button>
     </div>
 </div>

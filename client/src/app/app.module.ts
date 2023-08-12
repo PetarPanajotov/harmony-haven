@@ -20,6 +20,7 @@ import { HotelCardComponent } from './pages/hotels/hotel-card/hotel-card.compone
 import { AddHotelCardComponent } from './pages/hotels/add-hotel-card/add-hotel-card.component';
 import { SearchComponent } from './pages/destinations/search/search.component';
 import { DeleteIconComponent } from './shared/components/destination-card/delete-icon/delete-icon.component';
+import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DeleteIconComponent } from './shared/components/destination-card/delete
     AddHotelCardComponent,
     SearchComponent,
     DeleteIconComponent,
+    HotelDetailsComponent,
   ],
   imports: [
     BrowserModule,
