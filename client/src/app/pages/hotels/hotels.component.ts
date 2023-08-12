@@ -16,7 +16,7 @@ export class HotelsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id: string | null = params.get('id');
-        this.destinationService.getDestinationById(id!).subscribe((destination) => this.destination = destination)
+        this.destinationService.getHotels(id!).subscribe((destination) => this.destination = destination)
     });
   };
 };
