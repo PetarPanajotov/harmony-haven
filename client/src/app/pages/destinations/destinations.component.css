@@ -23,35 +23,6 @@
     color: white;
     text-align: center;
 }
-.destination-search-bar-container {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.destinations-search-bar-wrapper {
-    position: relative;
-}
-.destinations-search-bar-wrapper > input {
-    border-radius: 10px;
-    width: 20em;
-    height: 2em;
-    font-size: 1.2em;
-    text-indent: 1.8em;
-}
-.destinations-search-bar-wrapper > input:focus {
-    outline: 2px solid #c5e0dc
-}
-.destinations-search-bar-icon {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-}
-.destinations-search-bar-icon > svg {
-    height: 1.3em;
-    display: block;
-}
 .destinations-cards-title-wrapper {
     display: flex;
     flex-wrap: nowrap;

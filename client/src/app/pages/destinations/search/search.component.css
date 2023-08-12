@@ -1,0 +1,67 @@
+.destination-search-bar-container {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.destinations-search-bar-wrapper {
+    position: relative;
+}
+
+.destinations-search-bar-wrapper > input {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 20em;
+    height: 2em;
+    font-size: 1.2em;
+    padding: 0.5em 2em 0.5em 2.8em;
+    transition: border-color 0.3s;
+}
+.destinations-search-bar-wrapper > input.has-text {
+    border-radius: 10px 10px 0 0;
+}
+.destinations-search-bar-wrapper > input:focus {
+    outline: none;
+    border-color: #c5e0dc;
+}
+
+.destinations-search-bar-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.destinations-search-bar-icon > svg {
+    height: 1.3em;
+    fill: #999;
+    transition: fill 0.3s;
+}
+
+.destinations-search-bar-icon:hover > svg {
+    fill: #333;
+}
+
+/* Auto-suggestions Styles */
+.destination-search-suggestion {
+    list-style-type: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.destination-search-found-links {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+    color: inherit;
+}
+.destination-search-found-links:hover {
+    background-color: #ccc;
+}
+.destination-search-no-results-found {
+    padding: 0.5em;
+}
