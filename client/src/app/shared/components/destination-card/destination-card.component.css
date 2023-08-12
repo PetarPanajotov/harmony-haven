@@ -33,6 +33,7 @@ a {
     right: 1%;
 }
 .destination-card-single-edit-button > svg {
+    display: block;
     height: 1.5em;
     fill: var(--primary-color-background);
 }
