@@ -2,7 +2,8 @@ const Destination = require('../models/destinationModel');
 const { findAllDestinations,
         findMatchingDestinations,
         findDestinationById,
-        findAndEditDestination
+        findAndEditDestination,
+        findAndDeleteDestination
     } = require('../utils/dbFunctionsUtils');
 
 exports.destinations = async(search) => {
@@ -30,4 +31,8 @@ exports.findDestination = async(destinationId) => {
 exports.editDestination = async (destinationId, destinationName, destinationLocation, imgURL) => {
     const editedDestination = await findAndEditDestination(destinationId, destinationName, destinationLocation, imgURL);
     return editedDestination;
+};
+exports.removeDestination = async (destinationId) => {
+    const deletedDestiantion = await findAndDeleteDestination(destinationId);
+    return deletedDestiantion;
 }
