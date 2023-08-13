@@ -8,7 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DestinationsComponent } from './pages/destinations/destinations.component';
 import { HotelsComponent } from './pages/hotels/hotels.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { tokenInterceptorProvider } from './core/interceptors/token.interceptor';
 import { CoreModule } from './core/core.module';
 import { DestinationCardComponent } from './shared/components/destination-card/destination-card.component';
@@ -21,6 +21,8 @@ import { AddHotelCardComponent } from './pages/hotels/add-hotel-card/add-hotel-c
 import { SearchComponent } from './pages/destinations/search/search.component';
 import { DeleteIconComponent } from './shared/components/destination-card/delete-icon/delete-icon.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+// import { GoogleMapsComponent } from './pages/hotel-details/google-maps/google-maps.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.compo
     SearchComponent,
     DeleteIconComponent,
     HotelDetailsComponent,
+    // GoogleMapsComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,9 @@ import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.compo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    GoogleMapsModule,
+    HttpClientJsonpModule,
   ],
   providers: [tokenInterceptorProvider],
   bootstrap: [AppComponent]
