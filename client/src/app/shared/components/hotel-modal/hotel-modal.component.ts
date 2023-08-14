@@ -23,8 +23,9 @@ export class HotelModalComponent implements OnInit {
       imgURL: new FormControl(''),
       stars: new FormControl(''),
       type: new FormControl(''),
-      rating: new FormControl(''),
-      freeDate: new FormControl('')
+      price: new FormControl(''),
+      freeRooms: new FormControl(''),
+      description: new FormControl('')
     });
   };
 
@@ -38,11 +39,12 @@ export class HotelModalComponent implements OnInit {
       imgURL,
       stars,
       type,
-      rating,
-      freeDate
+      price,
+      freeRooms,
+      description
     } = this.hotelForm.value;
 
-    this.destinationService.createHotel(this.destination?._id!, hotelName!, hotelLocation!, imgURL!, stars!, type!, rating!, freeDate!)
+    this.destinationService.createHotel(this.destination?._id!, hotelName!, hotelLocation!, imgURL!, stars!, type!, price!, freeRooms!, description)
       .subscribe((createdHotel) => {
         this.destination!.hotels = [createdHotel, ...this.destination?.hotels];
         this.hotelListUpdated.emit(this.destination);

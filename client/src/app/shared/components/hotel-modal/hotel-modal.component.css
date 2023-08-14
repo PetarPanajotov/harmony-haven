@@ -30,7 +30,9 @@
     padding: 0 2em;
     gap: 0.2em 1em;
 }
-
+.create-hotel-rightside-wrapper {
+    align-self: stretch;
+}
 .create-hotel-modal-close {
     position: absolute;
     top: 1em;
@@ -101,7 +103,11 @@
     justify-content: center;
     gap: 2em;
 }
-
+#description {
+    resize: none;
+    height: 15em;
+    text-indent: 0;
+}
 #create-button,
 #cancel-button {
     border-radius: 5px;
