@@ -17,7 +17,7 @@ export class HotelDetailsComponent {
   }
   // apiLoaded: Observable<boolean>;
   // constructor(httpClient: HttpClient) {
-  //   this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=AIzaSyAJrAgwcc1vJhAV0nh4B0j0IjyZNQlXAPA`, 'callback')
+  //   this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=`, 'callback')
   //     .pipe(
   //       map(() => true),
   //       catchError(() => of(false)),
