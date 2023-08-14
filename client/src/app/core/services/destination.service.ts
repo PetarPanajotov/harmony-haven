@@ -56,8 +56,9 @@ export class DestinationService {
     imgURL: string,
     stars: number,
     type: string,
-    rating: number,
-    freeDate: number
+    price: number,
+    freeRooms: number,
+    description: string
   ) {
     return this.http.post<any>(`http://localhost:3000/${destinationId}/hotels`, {
       hotelName,
@@ -65,8 +66,9 @@ export class DestinationService {
       imgURL,
       stars,
       type,
-      rating,
-      freeDate
+      price,
+      freeRooms,
+      description
     })
   }
   getHotels(
