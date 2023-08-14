@@ -3,9 +3,9 @@ const { ErrorMessage } = require("../utils/errorHandlerUtils");
 
 exports.postHotel = async (req, res) => {
     const { id } = req.params;
-    const { hotelName, hotelLocation, imgURL, stars, type, rating, freeDate } = req.body;
+    const { hotelName, hotelLocation, imgURL, stars, type, price, freeRooms, description } = req.body;
     try {
-        const data = await createHotel(id, hotelName, hotelLocation, imgURL, stars, type, rating, freeDate);
+        const data = await createHotel(id, hotelName, hotelLocation, imgURL, stars, type, price, freeRooms, description);
         res.status(201)
             .send(data);
     } catch(error) {
