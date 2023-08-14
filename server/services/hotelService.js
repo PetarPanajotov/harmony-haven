@@ -1,4 +1,4 @@
-const { findDestinationById } = require("../utils/dbFunctionsUtils")
+const { findDestinationById, findHotelById } = require("../utils/dbFunctionsUtils")
 const Hotel = require("../models/hotelModel")
 
 exports.createHotel = async (id, hotelName, hotelLocation, imgURL, stars, type, price, freeRooms, description) => {
@@ -9,7 +9,11 @@ exports.createHotel = async (id, hotelName, hotelLocation, imgURL, stars, type, 
    await destination.save();
    return newHotel;
 };
-exports.hotels = async (id) => {
-   const destination = await findDestinationById(id).populate('hotels');
+exports.hotels = async (destinationId) => {
+   const destination = await findDestinationById(destinationId).populate('hotels');
    return destination;
-}
+};
+exports.findHotel = async(hotelId) => {
+   const oneHotel = await findHotelById(hotelId);
+   return oneHotel;
+};
