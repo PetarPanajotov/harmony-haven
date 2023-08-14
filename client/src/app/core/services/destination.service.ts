@@ -48,7 +48,7 @@ export class DestinationService {
   ) {
     return this.http.delete<any>(`http://localhost:3000/destinations/${destinationId}`)
   }
-
+//hotels
   createHotel(
     destinationId: string,
     hotelName: string,
@@ -71,10 +71,17 @@ export class DestinationService {
       description
     })
   }
+
   getHotels(
     destinationId: string
   ) {
     return this.http.get<any>(`http://localhost:3000/${destinationId}/hotels`)
   };
+
+  getHotelById(
+    hotelId: string
+  ) {
+    return this.http.get<any>(`http://localhost:3000/hotels/${hotelId}`)
+  }
 };
 
