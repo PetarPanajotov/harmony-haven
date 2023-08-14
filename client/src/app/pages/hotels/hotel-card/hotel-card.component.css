@@ -3,13 +3,18 @@
 }
 .destination-selected-hotel-card {
     width: 20em;
-    height: 27em;
+    height: 28em;
     box-shadow: 0 0 2em rgba(0,0,0,0.2);
     position: relative;;
 }
 .destination-selected-hotel-card > img {
     width: 20em;
     height: 15em;
+}
+.destination-selected-hotel-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .destination-selected-hotel-card-stars {
     position: absolute;

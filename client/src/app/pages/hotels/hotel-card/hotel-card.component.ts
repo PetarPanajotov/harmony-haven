@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class HotelCardComponent {
   @Input() hotel: any;
+  @Input() destinationLocation: any
 }

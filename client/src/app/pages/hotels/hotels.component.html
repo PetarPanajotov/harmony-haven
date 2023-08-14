@@ -24,6 +24,7 @@
         <app-add-hotel-card />
         <app-hotel-card *ngFor="let hotel of destination?.hotels"
             [hotel]="hotel"
+            [destinationLocation]="destination?.destinationLocation"
          />
     </section>
     <app-hotel-modal *ngIf="(modalService.modalStatus$ | async)"
