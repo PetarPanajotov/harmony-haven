@@ -22,12 +22,19 @@ const hotelSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    rating: {
+    reviews: {
+        type: Number,
+    },
+    price: {
         type: Number,
         required: true
     },
-    freeDate: {
+    freeRooms: {
         type: Number,
+    },
+    description: {
+        type: String,
+        required:  true
     }
 });
 module.exports = mongoose.model('Hotel', hotelSchema)
