@@ -8,19 +8,15 @@ import { DestinationService } from 'src/app/core/services/destination.service';
   styleUrls: ['./hotel-details.component.css']
 })
 export class HotelDetailsComponent implements OnInit{
-  hotel:any;
+  hotel: any | undefined;
+  hotelId: any;
 
   constructor(private destinationService: DestinationService, private route: ActivatedRoute){}
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const hotelId: string | null = params.get('hotelId');
-    this.destinationService.getHotelById(hotelId!)
-      .subscribe((hotel) => console.log(hotel))
-  })
-}
-  autoExpand(event: any) {
-    const textarea = event.target;
-    textarea!.style.height = 'auto';
-    textarea!.style.height = (textarea.scrollHeight) + 'px'
-  };
+      this.hotelId = params.get('hotelId');
+    this.destinationService.getHotelById(this.hotelId!)
+      .subscribe((hotelData) => this.hotel = hotelData)
+  });
+};
 };
