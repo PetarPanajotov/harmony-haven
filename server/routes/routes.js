@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { postRegister, postLogin, getMe, postLogout } = require('../controllers/auth');
 const { getDestinations, postDestination, getOneDestination, putEditDestination, deleteDestination } = require('../controllers/destination');
 const { postHotel, getHotels, getOneHotel } = require('../controllers/hotel');
+const { postReview } = require('../controllers/review');
 
 const router = Router();
 
@@ -20,5 +21,7 @@ router.delete('/destinations/:id', deleteDestination);
 router.post('/:id/hotels', postHotel);
 router.get('/:id/hotels', getHotels);
 router.get('/hotels/:id', getOneHotel)
+
+router.post('/:id/reviews', postReview);
 
 module.exports = router;
