@@ -83,5 +83,17 @@ export class DestinationService {
   ) {
     return this.http.get<any>(`http://localhost:3000/hotels/${hotelId}`)
   }
+
+  //reviews
+  createReview(
+    hotelId: string,
+    rating: number,
+    text: string
+  ) {
+    return this.http.post<any>(`http://localhost:3000/${hotelId}/reviews`, {
+      rating,
+      text
+    });
+  };
 };
 
