@@ -1,43 +1,26 @@
-<main class="hotel-details-container">
+<main class="hotel-details-container" *ngIf="hotel" >
     <section class="hotel-details-title-wrapper">
-        <h2>Palace, something something</h2>
+        <h2>{{hotel.hotelName}}</h2>
         <!-- <div *ngIf="apiLoaded | async">
             <google-map />
         </div> -->
         <div>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                    d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                    d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                    d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                    d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-            </svg>
+            <svg *ngFor="let _ of [].constructor(hotel.stars)" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+          </svg>
         </div>
     </section>
     <section class="hotel-details-image-booking-wrapper">
         <div class="hotel-details-image">
-            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            <img src={{hotel.imgURL}}
                 alt="" srcset="">
         </div>
         <div class="hotel-details-booking">
-            <p>Location: Tokyo, Japan</p>
-            <p>Type: Apartament</p>
-            <p>Free Rooms: 3 rooms available</p>
-            <p>Price: $264.54 <span>per room</span></p>
-            <p>Rating: 7.5 <span>Good </span><span>3433 reviews</span></p>
+            <p>Location: {{hotel.hotelLocation}}</p>
+            <p>Type: {{hotel.type}}</p>
+            <p>Free Rooms: {{hotel.freeRooms}} rooms available</p>
+            <p>Price: {{hotel.price}} <span>per room</span></p>
+            <p>Rating: {{hotel.rating}} <span>Good </span><span>3433 reviews</span></p>
             <button>Book now!</button>
         </div>
     </section>
@@ -48,127 +31,10 @@
                 <h3>Description</h3>
                 <div class="hotel-details-information-title-border"> </div>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse sequi earum nostrum porro? Hic numquam
-                atque
-                tempore doloremque distinctio, porro illum autem dicta nam aut sequi, reiciendis, fugiat molestiae quo?
-                Rem corporis nisi earum, nostrum dolore, eos inventore qui expedita neque quam doloremque vero
-                temporibus
-                dolorum optio non saepe, id repellendus commodi quisquam quis dolores quas in eum beatae. Consectetur!
-                Assumenda nam vel, consectetur, id adipisci cupiditate perferendis ea ad facere deleniti quis! Beatae,
-                possimus molestiae deleniti enim quisquam debitis tempora fugiat! Necessitatibus commodi ipsum eos
-                alias,
-                harum voluptatem? At.
-                Voluptatibus mollitia cum ad facilis ab tenetur non cupiditate illum! Explicabo facilis officiis id!
-                Tempora
-                odit libero quam mollitia fugit commodi animi saepe aliquam ullam, eum harum adipisci quis alias.
-                Praesentium harum, vel eos, ipsa sequi aut molestiae quis eligendi minima maxime laudantium nisi fugit
-                minus
-                quaerat corrupti vero exercitationem placeat earum deserunt alias a! Ratione mollitia dolores nihil
-                quos.
-                Explicabo molestiae ipsum hic tenetur! Esse perferendis temporibus laborum porro sint impedit,
-                doloremque
-                quidem labore blanditiis necessitatibus, culpa, et veritatis similique nesciunt iste. Iste illum omnis
-                reiciendis, quos blanditiis magni.
-                Repudiandae voluptas itaque corrupti dicta vero eligendi molestiae aperiam tempore, non facere ipsa
-                repellendus a officiis autem ratione nulla veniam voluptates doloribus tenetur repellat quis ad
-                laboriosam
-                nisi quos. Saepe.
-                Numquam perspiciatis similique ut molestias in, nam aliquid doloribus fugit iste, pariatur aperiam quam,
-                vel
-                quasi unde? Fugit neque maiores pariatur, magni labore dolorum adipisci, recusandae praesentium
-                explicabo
-                officiis dolores!
-                Iusto pariatur vel minima maiores quidem aliquam ducimus quo velit, sapiente ipsam temporibus nihil qui
-                voluptatum odit quae aut suscipit maxime at nemo consectetur explicabo voluptatem. Perferendis libero
-                ipsa
-                iste!
-                At eveniet molestias fuga atque nam aut facere provident doloremque velit impedit! Assumenda, similique?
-                Eius iste eaque quasi voluptatum possimus, tenetur ad suscipit quia commodi tempora accusamus
-                necessitatibus
-                nesciunt facilis!
-            </p>
-        </div>
-        <div class="hotel-details-information-reviews-wrapper">
-            <div class="hotel-details-information-title">
-                <div class="hotel-details-information-title-border"> </div>
-                <h3>Reviews</h3>
-                <div class="hotel-details-information-title-border"> </div>
-            </div>
-            <div class="hotel-details-information-review-card-wrapper">
-                <div class="hotel-details-information-review-card">
-                    <div class="hotel-details-information-review-card-avatar">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="hotel-details-information-review-card-avatar-information">
-                            <div class="hotel-details-information-review-card-avatar-information-grade-user">
-                                <p class="hotel-details-information-review-card-avatar-information-user">Plamen Minkov
-                                </p>
-                                <p class="hotel-details-information-review-card-avatar-information-grade">8.0</p>
-                            </div>
-                            <p>3 days ago</p>
-                        </div>
-                        <div class="hotel-details-information-review-card-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus veniam laudantium, aliquid
-                            impedit ipsam omnis eaque saepe deleniti, minima perspiciatis eveniet ab accusantium esse.
-                            Saepe corporis nesciunt totam labore perspiciatis.s
-                        </div>
-                    </div>
-                </div>
-                <div class="hotel-details-information-review-card">
-                    <div class="hotel-details-information-review-card-avatar">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="hotel-details-information-review-card-avatar-information">
-                            <div class="hotel-details-information-review-card-avatar-information-grade-user">
-                                <p class="hotel-details-information-review-card-avatar-information-user">Plamen Minkov
-                                </p>
-                                <p class="hotel-details-information-review-card-avatar-information-grade">10.0</p>
-                            </div>
-                            <p>3 days ago</p>
-                        </div>
-                        <div class="hotel-details-information-review-card-text">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus veniam laudantium, aliquid
-                            impedit ipsam omnis eaque saepe deleniti, minima perspiciatis eveniet ab accusantium esse.
-                            Saepe corporis nesciunt totam labore perspiciatis.s
-                        </div>
-                    </div>
-                </div>
-                <div class="hotel-details-information-review-card">
-                    <div class="hotel-details-information-review-card-avatar">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z" />
-                        </svg>
-                    </div>
-                    <div class="hotel-details-information-review-card-avatar-information-input-wrapper">
-                        <div class="hotel-details-information-review-card-avatar-information">
-                            <div class="hotel-details-information-review-card-avatar-information-grade-user">
-                                <p class="hotel-details-information-review-card-avatar-information-user">Petar Panayotov
-                                </p>
-                            </div>
-                        </div>
-                        <div class="hotel-details-information-review-card-input">
-                            <textarea placeholder="Leave your review here..."
-                            (input)="autoExpand($event)"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="hotel-details-information-review-card-load-more">
-                    <button>Load more</button>
-                </div>
-                
+            <div>
+                <p>{{hotel.description}}</p>
             </div>
         </div>
+        <app-reviews [hotelId]="hotelId"/>
     </section>
 </main>
