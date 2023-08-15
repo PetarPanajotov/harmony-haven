@@ -1,0 +1,79 @@
+.hotel-details-information-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+    padding: 2em 0;
+}
+.hotel-details-information-title-border {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(197, 224, 220);
+}
+.hotel-details-information-review-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.hotel-details-information-review-card {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1em;
+}
+.hotel-details-information-review-card-avatar {
+    width: 3em;
+    height: 3em;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+.hotel-details-information-review-card-avatar svg {
+    display: block;
+    height: 2em;
+    width: 2em;
+}
+.hotel-details-information-review-card-avatar-information {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1em;
+    padding: 0.2em 0;
+}
+.hotel-details-information-review-card-avatar-information-grade-user {
+    display: flex;
+    gap: 0.2em
+}
+.hotel-details-information-review-card-avatar-information-grade {
+    background-color: #003580;
+    color: white;
+    padding: 0.1em;
+}
+.hotel-details-information-review-card-avatar-information-user {
+    font-size: 1.2em;
+}
+.hotel-details-information-review-card-load-more button {
+    width: 100%;
+    padding: 0.2em 0;
+    background-color: rgb(197, 224, 220);
+}
+.hotel-details-information-review-card-avatar-information-input-wrapper {
+    width: 100%;
+}
+.hotel-details-information-review-card-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+.hotel-details-information-review-card-input textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 2em;
+    max-height: 30em;
+    width: 100%;
+}
