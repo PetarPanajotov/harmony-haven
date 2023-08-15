@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema.Types
 
 const hotelSchema = new mongoose.Schema({
     hotelName: {
@@ -22,9 +23,6 @@ const hotelSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    reviews: {
-        type: Number,
-    },
     price: {
         type: Number,
         required: true
@@ -35,6 +33,21 @@ const hotelSchema = new mongoose.Schema({
     description: {
         type: String,
         required:  true
-    }
+    },
+    reviews: [{
+        type: ObjectId,
+        ref: 'Review'
+    }]
 });
+//virtual property to calculate the rating based of the reviews
+hotelSchema.virtual('rating').get(function() {
+    if(this.reviews.length === 0) {
+        return 0;
+    }
+    const sum = this.reviews.reduce((total, review) => total + review.rating, 0);
+    return (sum / this.reviews.length).toFixed(1)
+});
+//this include virtual properties in the returned data as Object.
+hotelSchema.set('toObject', { virtuals: true });
+
 module.exports = mongoose.model('Hotel', hotelSchema)
