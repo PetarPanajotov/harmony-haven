@@ -22,6 +22,7 @@ import { SearchComponent } from './pages/destinations/search/search.component';
 import { DeleteIconComponent } from './shared/components/destination-card/delete-icon/delete-icon.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ReviewsComponent } from './pages/hotel-details/reviews/reviews.component';
 // import { GoogleMapsComponent } from './pages/hotel-details/google-maps/google-maps.component';
 
 @NgModule({
@@ -42,6 +43,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     SearchComponent,
     DeleteIconComponent,
     HotelDetailsComponent,
+    ReviewsComponent,
     // GoogleMapsComponent,
   ],
   imports: [
