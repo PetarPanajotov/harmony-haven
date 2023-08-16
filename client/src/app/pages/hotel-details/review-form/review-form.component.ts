@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
 import { DestinationService } from 'src/app/core/services/destination.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-review-form',
@@ -10,6 +11,7 @@ import { DestinationService } from 'src/app/core/services/destination.service';
 export class ReviewFormComponent implements OnInit {
   @Input() hotelId: any
   reviewForm: any;
+  user: any;
 
   gradeOptions: { value: number, text: string }[] = [
     { value: 10, text: 'Perfection' },
@@ -24,14 +26,14 @@ export class ReviewFormComponent implements OnInit {
     { value: 1, text: 'Terrible' }
   ];
 
-  constructor(private destinationService: DestinationService) { };
+  constructor(private destinationService: DestinationService, public userService: UserService) { };
 
   ngOnInit(): void {
     this.reviewForm = new FormGroup({
       grade: new FormControl(''),
       text: new FormControl(''),
     });
-    console.log(this.hotelId)
+    this.user = this.userService.userInformation
   };
 
   autoExpand(event: any): void {
@@ -42,7 +44,6 @@ export class ReviewFormComponent implements OnInit {
 
   createReview(): void {
     const { grade, text } = this.reviewForm.value
-    console.log(grade, text)
     this.destinationService.createReview(this.hotelId!, grade!, text!)
       .subscribe((data) => console.log(data));
   };

@@ -60,3 +60,12 @@
     width: 2em;
     fill: #fff;
 }
+.review-card-not-logged {
+    text-align: center;
+}
+.review-card-not-logged-text p{
+    font-size: 1.4em;
+}
+.review-card-not-logged-text a {
+    font-size: inherit;
+}
