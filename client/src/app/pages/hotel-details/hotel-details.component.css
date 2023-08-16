@@ -38,16 +38,29 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    gap: 0.3em;
     border-radius: 8px;
     box-shadow: 0 0 2em rgba(0, 0, 0, 0.1);
     background-color: #fff;
 }
-
-.hotel-details-booking p span {
-    font-weight: bold;
-    color: #e74c3c;
+.hotel-details-rating {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2em
 }
-
+.hotel-details-raiting-value {
+    background-color: #003580;
+    color: white;
+    padding: 0.3em;
+}
+.hotel-details-raiting-text {
+    font-weight: 700;
+}
+.hotel-details-raiting-counts {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.75em;
+    align-self: center;
+}
 .hotel-details-booking button {
     display: block;
     width: 100%;
