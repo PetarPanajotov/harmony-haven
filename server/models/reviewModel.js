@@ -10,9 +10,9 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    _ownerId: [{
+    _ownerId: {
         type: ObjectId,
         ref: 'User'
-    }]
+    }
 })
 module.exports = mongoose.model('Review', reviewSchema)
