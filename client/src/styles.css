@@ -4,4 +4,5 @@
 :root {
     --filter-hex-height: 10em;
     --primary-color-background: #537178;
+    --send-button-padding: 0.5em
 }
