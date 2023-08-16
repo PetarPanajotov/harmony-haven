@@ -13,6 +13,9 @@ export class UserService {
     return !!this.user;
   };
 
+  get userInformation(): any {
+    return this.user
+  }
 
   constructor(
     private http: HttpClient,
