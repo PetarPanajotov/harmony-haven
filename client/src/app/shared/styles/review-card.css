@@ -1,0 +1,28 @@
+.review-card {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1em;
+    width: 100%;
+}
+.review-card-avatar {
+    width: 3em;
+    height: 3em;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+.review-card-avatar svg {
+    display: block; 
+    height: 2em;
+    width: 2em;
+}
+.review-avatar-info-user {
+    display: flex;
+    gap: 0.2em
+}
+.review-avatar-info-username {
+    font-size: 1.2em;
+}
