@@ -1,0 +1,62 @@
+@import '(../../../../../shared/styles/review-card.css';
+
+.review-form {
+    width: 100%;
+}
+.review-avatar-info-user {
+    padding-bottom: 0.2em;
+}
+.review-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100%;
+    position: relative;
+}
+.review-grade {
+    border-bottom: 2px solid var(--primary-color-background);
+    margin-left: 10px;
+    transition: border-color 0.2s ease-in-out;
+}
+.review-grade:focus {
+    outline: none;
+    border-bottom-color: rgb(197, 224, 220);
+    
+}
+.review-input textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 2em;
+    max-height: 30em;
+    width: 100%;
+    outline: 2px solid var(--primary-color-background);
+    border-radius: 10px;
+    padding: 0.1em calc(3em + var(--send-button-padding)) 0.1em 0.4em;
+    transition: 0.2s ease-in-out;
+}
+.review-input textarea:focus {
+    outline-color: rgb(197, 224, 220);
+}
+.review-input-send-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0%;
+    left: 100%;
+    height: 100%;
+    padding: var(--send-button-padding);
+    transform: translateX(-100%);
+    background-color: var(--primary-color-background);
+    border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
+}
+.review-input-send-button:hover {
+    opacity: 0.9;
+}
+.review-input-send-button svg {
+    display: block;
+    height: 2em;
+    width: 2em;
+    fill: #fff;
+}
