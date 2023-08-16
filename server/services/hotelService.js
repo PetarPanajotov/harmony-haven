@@ -29,6 +29,7 @@ exports.hotels = async (destinationId) => {
 };
 
 exports.findHotel = async (hotelId) => {
-   const oneHotel = await findHotelById(hotelId);
+   const oneHotel = await findHotelById(hotelId).populate('reviews');
    return oneHotel;
 };
+    
