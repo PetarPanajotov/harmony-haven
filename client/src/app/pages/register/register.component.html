@@ -21,6 +21,16 @@
                     </div>
                     <input type="text" id="email" name="email" formControlName="email">
                 </div>
+                <ng-container *ngIf="profileForm.get('email')?.touched">
+                    <p class="error" *ngIf="profileForm.get('email')?.errors?.['required']; else customValidator">
+                        *Email is required!
+                    </p>
+                    <ng-template #customValidator>
+                        <p class="error" *ngIf="profileForm.get('email')?.errors?.['customEmail']">
+                            *Invalid email address!
+                        </p>
+                    </ng-template>
+                </ng-container>
             </div>
             <div>
                 <label for="firstName">First Name</label>
@@ -34,6 +44,16 @@
                     </div>
                     <input type="text" id="firstName" name="firstName" formControlName="firstName">
                 </div>
+                <ng-container *ngIf="profileForm.get('firstName')?.touched">
+                    <p class="error" *ngIf="profileForm.get('firstName')?.errors?.['required']; else customValidator">
+                        *First name is required!
+                    </p>
+                    <ng-template #customValidator>
+                        <p class="error" *ngIf="profileForm.get('firstName')?.errors?.['customFirstName']">
+                            *First name must contain only latin letters!
+                        </p>
+                    </ng-template>
+                </ng-container>
             </div>
             <div>
                 <label for="lastName">Last Name</label>
@@ -47,6 +67,16 @@
                     </div>
                     <input type="text" id="lastName" name="lastName" formControlName="lastName">
                 </div>
+                <ng-container *ngIf="profileForm.get('lastName')?.touched">
+                    <p class="error" *ngIf="profileForm.get('lastName')?.errors?.['required']; else customValidator">
+                        *Last name is required!
+                    </p>
+                    <ng-template #customValidator>
+                        <p class="error" *ngIf="profileForm.get('lastName')?.errors?.['customLastName']">
+                            *Last name must contain only latin letters!
+                        </p>
+                    </ng-template>
+                </ng-container>
             </div>
             <div>
                 <label for="password">Password</label>
@@ -60,20 +90,30 @@
                     </div>
                     <input type="password" id="password" name="password" formControlName="password">
                 </div>
+                <ng-container *ngIf="profileForm.get('password')?.touched">
+                    <p class="error" *ngIf="profileForm.get('password')?.errors?.['minlength']">
+                        *Password must be at least 6 characters
+                    </p>
+                </ng-container>
             </div>
             <div>
-            <label for="repeat-password">Repeat Password</label>
-            <div class="input-with-icon-wrapper">
-                <div class="input-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                            d="M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96H320v32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32V64H160C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96H192V352c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V448H352c88.4 0 160-71.6 160-160z" />
-                    </svg>
+                <label for="repeat-password">Repeat Password</label>
+                <div class="input-with-icon-wrapper">
+                    <div class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96H320v32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32V64H160C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96H192V352c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V448H352c88.4 0 160-71.6 160-160z" />
+                        </svg>
+                    </div>
+                    <input type="password" id="repeat-password" name="repeatPassword" formControlName="repeatPassword">
                 </div>
-                <input type="password" id="repeat-password" name="repeatPassword" formControlName="repeatPassword">
+                <ng-container *ngIf="profileForm.get('repeatPassword')?.touched">
+                    <p class="error" *ngIf="profileForm.get('repeatPassword')?.errors?.['customRepeatPassword']">
+                        *Password missmatch!
+                    </p>
+                </ng-container>
             </div>
-        </div>
             <a href="" id="sign-in-link">Already have an account? Sign in.</a>
             <button id="sign-up-button">Sign up</button>
         </form>
