@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { postRegister, postLogin, getMe, postLogout } = require('../controllers/auth');
 const { getDestinations, postDestination, getOneDestination, putEditDestination, deleteDestination } = require('../controllers/destination');
 const { postHotel, getHotels, getOneHotel } = require('../controllers/hotel');
-const { postReview } = require('../controllers/review');
+const { postReview, getReviews } = require('../controllers/review');
 const { checkAuth } = require('../middlewares/auth');
 
 const router = Router();
@@ -23,6 +23,7 @@ router.post('/:id/hotels', postHotel);
 router.get('/:id/hotels', getHotels);
 router.get('/hotels/:id', getOneHotel)
 
+router.get('/:id/reviews', getReviews)
 router.post('/:id/reviews', checkAuth(), postReview);
 
 module.exports = router;
