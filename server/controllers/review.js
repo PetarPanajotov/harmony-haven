@@ -1,4 +1,4 @@
-const { createReview, reviews } = require("../services/reviewService");
+const { createReview, reviews, doesUserLeftReview } = require("../services/reviewService");
 const { ErrorMessage } = require("../utils/errorHandlerUtils");
 
 exports.postReview = async(req, res) => {
@@ -26,5 +26,17 @@ exports.getReviews = async(req, res) => {
     } catch(error) {
         res.status(404)
             .send(ErrorMessage(error));
+    };
+};
+
+exports.getUserHasLeftReview = async(req, res) => {
+    const {_id: userId} = req.user;
+    try {
+        const data = await doesUserLeftReview(userId);
+        res.status(200)
+            .send(data);
+    } catch(error) {
+        res.status(404)
+            .semd(ErrorMessage(error));
     };
 };
