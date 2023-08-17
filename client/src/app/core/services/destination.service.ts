@@ -79,11 +79,17 @@ export class DestinationService {
   };
 
   getHotelById(
-    hotelId: string
+    hotelId: string,
   ) {
     return this.http.get<any>(`http://localhost:3000/hotels/${hotelId}`)
+  };
+  getReviews(
+    hotelId: string,
+    offset: number,
+    limit: number
+  ) {
+    return this.http.get<any>(`http://localhost:3000/${hotelId}/reviews?offset=${offset}&limit=${limit}`)
   }
-
   //reviews
   createReview(
     hotelId: string,
