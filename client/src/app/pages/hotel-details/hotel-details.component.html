@@ -41,6 +41,9 @@
                 <p>{{hotel.description}}</p>
             </div>
         </div>
-        <app-reviews [hotelId]="hotelId" [reviews]="hotel.reviews" />
+        <app-reviews
+            [hotelId]="hotelId"
+            [hotelReviewsCount]="hotel.reviewsCount"
+        />
     </section>
 </main>

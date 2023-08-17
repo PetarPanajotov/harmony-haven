@@ -1,5 +1,5 @@
 const Review = require("../models/reviewModel");
-const { findHotelByIdAndUpdate } = require("../utils/dbFunctionsUtils");
+const { findHotelByIdAndUpdate, findHotelById } = require("../utils/dbFunctionsUtils");
 
 exports.createReview = async (hotelId, rating, text, userId) => {
     const newReview = new Review({rating, text, _ownerId: userId});
@@ -7,3 +7,15 @@ exports.createReview = async (hotelId, rating, text, userId) => {
     await findHotelByIdAndUpdate({_id: hotelId}, {$push: {reviews: newReview._id}});
     return newReview;
  };
+
+exports.reviews = async(hotelId, offset, limit) => {
+    const hotel = await findHotelById(hotelId).populate({
+        path: 'reviews',
+        options: {
+            skip: offset,
+            limit: limit
+        }
+    });
+    const reviews = hotel.reviews;
+    return reviews;
+};

@@ -31,8 +31,6 @@ exports.hotels = async (destinationId) => {
 exports.findHotel = async (hotelId) => {
     const oneHotel = await findHotelById(hotelId).populate('reviews')
         .then((hotel) => hotel.toObject());
-    oneHotel.reviews.forEach(review => {
-        review.rating = review.rating.toFixed(1)
-    })
+    oneHotel.reviews = undefined;
     return oneHotel;
 };

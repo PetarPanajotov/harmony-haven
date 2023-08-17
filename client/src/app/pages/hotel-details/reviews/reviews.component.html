@@ -25,8 +25,8 @@
             </div>
         </div>
         <app-review-form [hotelId]="hotelId"/>
-        <div class="review-load-more">
-            <button>Load more</button>
+        <div class="review-load-more" *ngIf="hotelReviewsCount > reviews.length">
+            <button (click)="loadMoreReviews()">Load more</button>
         </div>
     </div>
 </div>
