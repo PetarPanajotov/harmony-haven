@@ -1,6 +1,8 @@
 const Destination = require('../models/destinationModel')
 const Hotel = require('../models/hotelModel');
 const User = require('../models/userModel');
+const Review = require('../models/reviewModel');
+
 const findAllDestinations = () => Destination.find({});
 const findMatchingDestinations = (query) => Destination.find({destinationName: { $regex: query, $options: 'i' } });
 const findDestinationById = (destinationId) => Destination.findById(destinationId);
@@ -8,7 +10,8 @@ const findAndEditDestination = (destiantionId, destinationName, destinationLocat
 const findAndDeleteDestination = (destiantionId) => Destination.findByIdAndDelete(destiantionId);
 const findHotelById = (hotelId) => Hotel.findById(hotelId);
 const findHotelByIdAndUpdate = (hotelId, options) => Hotel.findByIdAndUpdate(hotelId, options);
-const findUserById = (userId) => User.findById(userId)
+const findUserById = (userId) => User.findById(userId);
+const findReviewByUserId = (userId) => Review.findOne({_ownerId: userId});
 module.exports = {
     findAllDestinations,
     findMatchingDestinations,
@@ -17,5 +20,6 @@ module.exports = {
     findAndDeleteDestination,
     findHotelById,
     findHotelByIdAndUpdate,
-    findUserById
+    findUserById,
+    findReviewByUserId
 }
