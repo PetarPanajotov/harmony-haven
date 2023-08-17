@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
 import { DestinationService } from 'src/app/core/services/destination.service';
 import { UserService } from 'src/app/core/services/user.service';
@@ -9,9 +9,12 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./review-form.component.css']
 })
 export class ReviewFormComponent implements OnInit {
-  @Input() hotelId: any
+  @Input() hotelId: any;
+  @Input() reviewList: any
+  @Output() reviewListUpdated: EventEmitter<any> = new EventEmitter();
   reviewForm: any;
   user: any;
+  hasReview: boolean = false;
 
   gradeOptions: { value: number, text: string }[] = [
     { value: 10, text: 'Perfection' },
@@ -28,12 +31,18 @@ export class ReviewFormComponent implements OnInit {
 
   constructor(private destinationService: DestinationService, public userService: UserService) { };
 
+
   ngOnInit(): void {
     this.reviewForm = new FormGroup({
       grade: new FormControl(''),
       text: new FormControl(''),
     });
-    this.user = this.userService.userInformation
+    this.user = this.userService.userInformation;
+
+    if (this.userService.isLogged) {
+      this.destinationService.getIfUserHasReview()
+        .subscribe((isUserHasReview) => this.hasReview = isUserHasReview)
+    };
   };
 
   autoExpand(event: any): void {
@@ -45,6 +54,10 @@ export class ReviewFormComponent implements OnInit {
   createReview(): void {
     const { grade, text } = this.reviewForm.value
     this.destinationService.createReview(this.hotelId!, grade!, text!)
-      .subscribe((data) => console.log(data));
+      .subscribe((newReview) => {
+        this.reviewList = [newReview, ...this.reviewList];
+        this.reviewListUpdated.emit(this.reviewList)
+        this.hasReview = true;
+      });
   };
 };

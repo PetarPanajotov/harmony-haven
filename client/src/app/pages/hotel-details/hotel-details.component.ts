@@ -16,11 +16,12 @@ export class HotelDetailsComponent implements OnInit {
   }
 
   constructor(private destinationService: DestinationService, private route: ActivatedRoute) { }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.hotelId = params.get('hotelId');
       this.destinationService.getHotelById(this.hotelId)
         .subscribe((hotelData) => this.hotel = hotelData)
     });
-  }
-}
+  };
+};

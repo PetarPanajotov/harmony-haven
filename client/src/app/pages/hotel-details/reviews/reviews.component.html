@@ -24,7 +24,11 @@
                 <div class="review-text">{{review.text}}</div>
             </div>
         </div>
-        <app-review-form [hotelId]="hotelId"/>
+        <app-review-form
+            [hotelId]="hotelId"
+            [reviewList]="reviews"
+            (reviewListUpdated)="handleReviewListUpdate($event)"
+            />
         <div class="review-load-more" *ngIf="hotelReviewsCount > reviews.length">
             <button (click)="loadMoreReviews()">Load more</button>
         </div>

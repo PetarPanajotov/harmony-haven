@@ -19,11 +19,17 @@ export class ReviewsComponent implements OnInit {
   ngOnInit(): void {
     this.destinationService.getReviews(this.hotelId, this.pagination.offset, this.pagination.limit)
       .subscribe((reviewData) => this.reviews = reviewData);
-      console.log(this.hotelReviewsCount)
   };
+
+  handleReviewListUpdate(updatedList: any) {
+    this.reviews = updatedList;
+  };
+
   loadMoreReviews(): void {
     this.pagination.offset += 5;
     this.destinationService.getReviews(this.hotelId, this.pagination.offset, this.pagination.limit)
-      .subscribe((reviewData) => this.reviews.push(...reviewData))
+      .subscribe((reviewData) => {
+        this.reviews.push(...reviewData)});
   };
+
 };
