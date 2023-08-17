@@ -1,5 +1,5 @@
 const Review = require("../models/reviewModel");
-const { findHotelByIdAndUpdate, findHotelById } = require("../utils/dbFunctionsUtils");
+const { findHotelByIdAndUpdate, findHotelById, findReviewByUserId } = require("../utils/dbFunctionsUtils");
 
 exports.createReview = async (hotelId, rating, text, userId) => {
     const newReview = new Review({rating, text, _ownerId: userId});
@@ -18,4 +18,9 @@ exports.reviews = async(hotelId, offset, limit) => {
     });
     const reviews = hotel.reviews;
     return reviews;
+};
+
+exports.doesUserLeftReview = async(userId) => {
+    const isReview = !!await findReviewByUserId(userId)
+    return isReview
 };
