@@ -6,9 +6,9 @@ const config = require('./config/config');
 const router = require('./routes/routes');
 const cookieParser = require('cookie-parser');
 const { logRequest } = require('./middlewares/logRequest');
-
-databaseInit()
-    .then(() => {
+async function startServer() {
+    try {
+        await databaseInit()
         const app = express();
         app.use(cookieParser())
         app.use(cors({
@@ -22,4 +22,9 @@ databaseInit()
         app.listen(config.port, () => {
             console.log(`Server is running on port ${config.port}`)
         })
-    })
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+startServer();
