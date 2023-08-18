@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../types/users';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -52,18 +53,15 @@ export class UserService {
     return this.http.post<User>('http://localhost:3000/login', {
       email,
       password
-    }).subscribe((user) => {
+    }).pipe(tap((user) => {
       this.user = user
-      this.router.navigate(['/'])
-    })
-  };
+    }));
+  }
 
   logout() {
     return this.http.post('http://localhost:3000/logout', {})
-      .subscribe(() => {
+      .pipe(tap((user) => {
         this.user = undefined;
-        this.router.navigate(['/'])
-      })
-  }
-
+      }));
+  };
 };
