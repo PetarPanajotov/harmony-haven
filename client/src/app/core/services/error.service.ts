@@ -5,10 +5,13 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ErrorService {
-  error$$ = new BehaviorSubject(null)
+  apiError$$ = new BehaviorSubject(null)
   constructor() { }
 
   setError(error: any): void {
-    this.error$$.next(error)
+    this.apiError$$.next(error)
   };
+  removeError(): void {
+    this.apiError$$.next(null)
+  }
 };
