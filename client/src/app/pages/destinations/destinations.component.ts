@@ -16,7 +16,7 @@ export class DestinationsComponent implements OnInit, OnDestroy {
   isEditing = false;
   isCreating = false;
 
-  private modalStatusSubscription: Subscription = Subscription.EMPTY;
+  private modalStatusSubscription: Subscription | undefined;
 
   constructor(
     private destinationService: DestinationService,
@@ -38,11 +38,8 @@ export class DestinationsComponent implements OnInit, OnDestroy {
     });
   };
 
-  ngOnDestroy(): void {
-    this.modalStatusSubscription.unsubscribe();
-  };
 
-  handleDestinationListUpdate(updatedList: any[]): void{
+  handleDestinationListUpdate(updatedList: any[]): void {
     this.destinationList = updatedList;
   }
 
@@ -55,5 +52,8 @@ export class DestinationsComponent implements OnInit, OnDestroy {
   onDestinationCreate(isClicked: boolean): void {
     this.modalService.openModal();
     this.isCreating = isClicked;
+  };
+  ngOnDestroy(): void {
+    this.modalStatusSubscription?.unsubscribe();
   };
 };

@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DestinationService } from 'src/app/core/services/destination.service';
 import { ModalService } from 'src/app/core/services/modal.service';
+import { ValidatorService } from 'src/app/core/services/validator.service';
 
 
 @Component({
@@ -17,13 +18,16 @@ export class DestinationModalComponent implements OnInit {
   @Output() destinationListUpdated: EventEmitter<any> = new EventEmitter();
   destinationForm: any = [];
 
-  constructor(private modalService: ModalService, private destinationService: DestinationService) { };
+  constructor(
+    private modalService: ModalService,
+    private destinationService: DestinationService,
+    private validatorService: ValidatorService) { };
 
   ngOnInit(): void {
     this.destinationForm = new FormGroup({
-      destinationName: new FormControl(this.isEditMode ? this.destinationDataToEdit.destinationName : ""),
-      destinationLocation: new FormControl(this.isEditMode ? this.destinationDataToEdit.destinationLocation : ""),
-      imgURL: new FormControl(this.isEditMode ? this.destinationDataToEdit.imgURL : "")
+      destinationName: new FormControl(this.isEditMode ? this.destinationDataToEdit.destinationName : "", [Validators.required, this.validatorService.customDestinationNameValidator()]),
+      destinationLocation: new FormControl(this.isEditMode ? this.destinationDataToEdit.destinationLocation : "", [Validators.required, this.validatorService.customDestinationLocationValidator()]),
+      imgURL: new FormControl(this.isEditMode ? this.destinationDataToEdit.imgURL : "", [Validators.required, this.validatorService.customDestinationImgURLValidator()])
     })
   }
 
@@ -38,6 +42,10 @@ export class DestinationModalComponent implements OnInit {
       destinationLocation,
       imgURL
     } = this.destinationForm.value;
+
+    if (this.destinationForm.invalid) {
+      return
+    };
 
     this.destinationService.createDestination(destinationName!, destinationLocation!, imgURL!)
       .subscribe((createdDestination) => {
@@ -54,11 +62,14 @@ export class DestinationModalComponent implements OnInit {
       imgURL
     } = this.destinationForm.value;
 
+    if (this.destinationForm.invalid) {
+      return
+    };
     const destinationId = this.destinationDataToEdit!._id;
     this.destinationService.editDestination(destinationId!, destinationName!, destinationLocation!, imgURL!)
       .subscribe((editDestination) => {
         this.destinationList = this.destinationList.map((destination: any) =>
-        destination._id === editDestination._id ? editDestination : destination);
+          destination._id === editDestination._id ? editDestination : destination);
         this.destinationListUpdated.emit(this.destinationList);
         this.modalService.closeModal();
       });

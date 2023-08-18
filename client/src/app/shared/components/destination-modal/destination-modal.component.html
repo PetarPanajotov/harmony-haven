@@ -24,6 +24,16 @@
                     </div>
                     <input id="destination-name" class="create-destination-input" name="destinationName" formControlName="destinationName">
                 </div>
+                <ng-container *ngIf="destinationForm.get('destinationName')?.touched">
+                    <p class="error" *ngIf="destinationForm.get('destinationName')?.errors?.['required']; else customValidator">
+                        *Destination name is required!
+                    </p>
+                    <ng-template #customValidator>
+                        <p class="error" *ngIf="destinationForm.get('destinationName')?.errors?.['customDestinationName']">
+                            *Destination name must contain only latin letters.
+                        </p>
+                    </ng-template>
+                </ng-container>
             </div>
             <div class="create-destination-input-wrapper">
                 <label for="destination-location" class="create-destination-label">Location</label>
@@ -37,6 +47,16 @@
                     </div>
                     <input id="destination-location" class="create-destination-input" name="destinationLocation" formControlName="destinationLocation">
                 </div>
+                <ng-container *ngIf="destinationForm.get('destinationLocation')?.touched">
+                    <p class="error" *ngIf="destinationForm.get('destinationLocation')?.errors?.['required']; else customValidator">
+                        *Location is required!
+                    </p>
+                    <ng-template #customValidator>
+                        <p class="error" *ngIf="destinationForm.get('destinationLocation')?.errors?.['customDestinationLocation']">
+                            *Location name must contain only latin letters.
+                        </p>
+                    </ng-template>
+                </ng-container>
             </div>
             <div class="create-destination-input-wrapper">
                 <label for="destination-img" class="create-destination-label">Image URL</label>
@@ -50,6 +70,16 @@
                     </div>
                     <input id="destination-img" class="create-destination-input" name="imgURL" formControlName="imgURL">
                 </div>
+                <ng-container *ngIf="destinationForm.get('imgURL')?.touched">
+                    <p class="error" *ngIf="destinationForm.get('imgURL')?.errors?.['required']; else customValidator">
+                        *Image is required!
+                    </p>
+                    <ng-template #customValidator>
+                        <p class="error" *ngIf="destinationForm.get('imgURL')?.errors?.['customDestinationImgURL']">
+                            *Image URL link is invalid!
+                        </p>
+                    </ng-template>
+                </ng-container>
             </div>
             <div class="create-destination-buttons">
                 <button id="create-button" type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>

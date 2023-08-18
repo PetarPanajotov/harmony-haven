@@ -1,9 +1,6 @@
 <main class="hotel-details-container" *ngIf="hotel">
     <section class="hotel-details-title-wrapper">
         <h2>{{hotel.hotelName}}</h2>
-        <!-- <div *ngIf="apiLoaded | async">
-                <google-map />
-            </div> -->
         <div>
             <svg *ngFor="let _ of [].constructor(hotel.stars)" xmlns="http://www.w3.org/2000/svg" height="1em"
                 viewBox="0 0 576 512">

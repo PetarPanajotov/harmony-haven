@@ -13,5 +13,5 @@ export class ErrorService {
   };
   removeError(): void {
     this.apiError$$.next(null)
-  }
+  };
 };

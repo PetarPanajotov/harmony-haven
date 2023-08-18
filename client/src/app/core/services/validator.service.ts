@@ -8,7 +8,10 @@ export class ValidatorService {
   validationPatterns = {
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
     firstName: /^[a-zA-Z]+$/,
-    lastName: /^[a-zA-Z]+$/
+    lastName: /^[a-zA-Z]+$/,
+    destinationName: /^[a-zA-Z\s]+$/,
+    destinationLocation: /^[a-zA-Z\s]+$/,
+    destinationImgURL: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/
   }
   constructor() { }
   
@@ -30,7 +33,7 @@ export class ValidatorService {
       return null;
     };
   };
-
+  //register validators
   customEmailValidator(): ValidatorFn {
     return this.patternValidator(this.validationPatterns.email, 'customEmail')
   };
@@ -40,4 +43,14 @@ export class ValidatorService {
   customLastNameValidator(): ValidatorFn {
     return this.patternValidator(this.validationPatterns.lastName, 'customLastName')
   }
-}
+  //create destination validators
+  customDestinationNameValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.destinationName, 'customDestinationName')
+  }
+  customDestinationLocationValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.destinationLocation, 'customDestinationLocation')
+  };
+  customDestinationImgURLValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.destinationImgURL, 'customDestinationImgURL')
+  };
+};
