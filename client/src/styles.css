@@ -6,3 +6,6 @@
     --primary-color-background: #537178;
     --send-button-padding: 0.5em
 }
+.error {
+    color: red;
+}

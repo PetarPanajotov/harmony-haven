@@ -6,11 +6,12 @@
 }
 /* form wrapper */
 .register-form form {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 1em 4em;
+    padding: 2em 4em;
     border-radius: 15px;
     gap: 0.5em;
     box-shadow: 0 0 3em rgba(0, 0, 0, 0.2);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ErrorService } from 'src/app/core/services/error.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { ValidatorService } from 'src/app/core/services/validator.service';
 
@@ -20,11 +21,12 @@ export class RegisterComponent {
     constructor(
         private userService: UserService,
         private router: Router,
-        private validatorService: ValidatorService
-    ) {}
+        private validatorService: ValidatorService,
+        private errorService: ErrorService
+    ) { }
 
     register(): void {
-        if(this.profileForm.invalid) {
+        if (this.profileForm.invalid) {
             return
         };
         const {
@@ -34,8 +36,11 @@ export class RegisterComponent {
             password,
             repeatPassword
         } = this.profileForm.value;
-        console.log(email)
+
         this.userService.register(email!, firstName!, lastName!, password!, repeatPassword!)
-            .subscribe(() => this.router.navigate(['/']));
+            .subscribe({
+                next: () => this.router.navigate(['/']),
+                error: (error) => this.errorService.setError(error)
+            });
     };
 };
