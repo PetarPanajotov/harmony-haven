@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DestinationService } from 'src/app/core/services/destination.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 
 @Component({
@@ -13,7 +14,9 @@ export class DestinationCardComponent {
   @Output() detinationData: EventEmitter<any> = new EventEmitter();
   @Output() destinationListUpdated: EventEmitter<any> = new EventEmitter()
 
-  constructor(private destinationService: DestinationService) { }
+  constructor(
+    private destinationService: DestinationService,
+    public userService: UserService) { }
 
   onEditClicked(event: Event): void {
     //to prevent from routing;
@@ -22,10 +25,12 @@ export class DestinationCardComponent {
 
     const destinationId = this.destination._id;
     this.destinationService.getDestinationById(destinationId)
-      .subscribe((destinationData) => this.detinationData.emit(destinationData));
+      .subscribe((destinationData) => {
+        this.detinationData.emit(destinationData)});
   };
 
   onDeleteClicked(event: Event): void {
+    //to prevent from routing;
     event.stopPropagation();
     event.preventDefault();
 
@@ -33,7 +38,6 @@ export class DestinationCardComponent {
     this.destinationService.deleteDestination(destinationId)
       .subscribe((destinationData) => {
         this.destinationList = this.destinationList.filter((destination: any) => destination._id !== destinationData._id);
-        console.log(this.destinationList)
         this.destinationListUpdated.emit(this.destinationList)
       });
   };

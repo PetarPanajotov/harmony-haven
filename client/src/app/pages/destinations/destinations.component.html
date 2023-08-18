@@ -22,7 +22,8 @@
                 (detinationData)="onDestinationEdit($event)"
                 (destinationListUpdated)="handleDestinationListUpdate($event)">
             </app-destination-card>
-            <app-add-destination-card
+            
+            <app-add-destination-card *ngIf="userService.isLogged && userService.userInformation.isAdmin"
                 (createDestinationClicked)="onDestinationCreate($event)">
             </app-add-destination-card>
         </div>
@@ -38,7 +39,7 @@
                 (detinationData)="onDestinationEdit($event)"
                 (destinationListUpdated)="handleDestinationListUpdate($event)">
             </app-destination-card>
-            <app-add-destination-card
+            <app-add-destination-card *ngIf="userService.isLogged && userService.userInformation.isAdmin"
                 (createDestinationClicked)="onDestinationCreate($event)">
             </app-add-destination-card>
         </div>

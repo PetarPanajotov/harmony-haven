@@ -24,7 +24,7 @@ import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.compo
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ReviewsComponent } from './pages/hotel-details/reviews/reviews.component';
 import { ReviewFormComponent } from './pages/hotel-details/review-form/review-form.component';
-// import { GoogleMapsComponent } from './pages/hotel-details/google-maps/google-maps.component';
+import { EditIconComponent } from './shared/components/destination-card/edit-icon/edit-icon.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { ReviewFormComponent } from './pages/hotel-details/review-form/review-fo
     HotelDetailsComponent,
     ReviewsComponent,
     ReviewFormComponent,
-    // GoogleMapsComponent,
+    EditIconComponent,
   ],
   imports: [
     BrowserModule,
