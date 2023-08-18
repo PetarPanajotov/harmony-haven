@@ -17,7 +17,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.apiErrorSubscription = this.apiError$.subscribe((error: any) => {
-      this.errorMsg = error?.message || ""
+      this.errorMsg = error?.error || ""
 
       if (error) {
         setTimeout(() => {
