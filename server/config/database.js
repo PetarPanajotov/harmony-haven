@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 async function databaseInit() {
     mongoose.set('strictQuery', false);
     try {
+        console.log(config.databaseURL)
         await mongoose.connect(config.databaseURL);
         return console.log('Database is connected');
     } catch(error) {
