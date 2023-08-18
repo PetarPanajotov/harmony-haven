@@ -18,17 +18,15 @@ export class UserService {
     return this.user
   }
 
-  constructor(
-    private http: HttpClient,
-    private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   checkIfUserHasSession(): any {
     return this.http.get<User>('http://localhost:3000/me')
       .subscribe({
         next: (user) => this.user = user,
         error: (error) => console.log(error.error)
-      })
-  }
+      });
+  };
 
   register(
     email: string,
@@ -43,7 +41,9 @@ export class UserService {
       lastName,
       password,
       repeatPassword
-    })
+    }).pipe(tap((user) => {
+      this.user = user
+    }))
   };
 
   login(
@@ -60,7 +60,7 @@ export class UserService {
 
   logout() {
     return this.http.post('http://localhost:3000/logout', {})
-      .pipe(tap((user) => {
+      .pipe(tap(() => {
         this.user = undefined;
       }));
   };
