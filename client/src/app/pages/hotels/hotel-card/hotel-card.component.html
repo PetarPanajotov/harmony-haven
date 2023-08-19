@@ -16,7 +16,7 @@
         <p class="destination-selected-hotel-card-price">Price: ${{hotel.price}}</p>
         <div class="destination-selected-hotel-card-grade">
             <p>{{hotel.rating? hotel.rating: "N/A"}}</p>
-            <p>Excellent</p>
+            <p>{{hotel.grade? hotel.grade: "N/A"}}</p>
         </div>
         <button [routerLink]="[hotel.hotelName, hotel._id]" class="destination-selected-hotel-card-details">Check details</button>
     </div>
