@@ -24,20 +24,21 @@
                         <p>{{review.createdAt | timestamp}}</p>
                     </div>
                     <div class="review-text">{{review.text}}</div>
-                    <div class="review-options">
+                    <div class="review-options"
+                        *ngIf="userService.isLogged && userService.userInformation._id == review._ownerId?._id">
                         <p (click)="onEditClicked(review)">Edit</p>
-                        <p>Delete</p>
+                        <p (click)="onDeleteClicked(review)">Delete</p>
                     </div>
                 </div>
             </ng-container>
             <div class="review-form-container" *ngIf="review?.editing">
-                <app-review-form 
-                    [reviewToEdit]="reviewToEdit"
-                    [reviewList]="reviews"
-                    (reviewListUpdated)="handleReviewListUpdate($event, review)"/>
+                <app-review-form [reviewToEdit]="reviewToEdit" [reviewList]="reviews"
+                    (reviewListUpdated)="handleReviewListUpdate($event, review)" />
             </div>
         </div>
-        <app-review-form [hotelId]="hotelId" [reviewList]="reviews"
+        <app-review-form *ngIf="userService.isLogged && !hasReview"
+            [hotelId]="hotelId" 
+            [reviewList]="reviews"
             (reviewListUpdated)="handleReviewListUpdate($event)" />
         <div class="review-load-more" *ngIf="hotelReviewsCount > reviews.length">
             <button (click)="loadMoreReviews()">Load more</button>

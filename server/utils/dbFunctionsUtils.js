@@ -15,6 +15,7 @@ const findUserById = (userId) => User.findById(userId);
 const findReviewByUserId = (userId) => Review.findOne({_ownerId: userId});
 const findReviewById = (reviewId) => Review.findById(reviewId);
 const findAndEditReview = (reviewId, rating, text) => Review.findByIdAndUpdate(reviewId, {rating, text}, {new: true})
+const findAndDeleteReview = (reviewId) => Review.findByIdAndDelete(reviewId);
 module.exports = {
     findAllDestinations,
     findMatchingDestinations,
@@ -27,5 +28,6 @@ module.exports = {
     findUserById,
     findReviewByUserId,
     findReviewById,
-    findAndEditReview
+    findAndEditReview,
+    findAndDeleteReview
 }

@@ -128,5 +128,10 @@ export class DestinationService {
       text
     })
   }
+  deleteReview(
+    reviewId: string
+  ) {
+    return this.http.delete<any>(`http://localhost:3000/reviews/${reviewId}`)
+  }
 };
 

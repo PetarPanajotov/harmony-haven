@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { postRegister, postLogin, getMe, postLogout } = require('../controllers/auth');
 const { getDestinations, postDestination, getOneDestination, putEditDestination, deleteDestination } = require('../controllers/destination');
 const { postHotel, getHotels, getOneHotel } = require('../controllers/hotel');
-const { postReview, getReviews, getUserHasLeftReview, getOneReview, putEditReview } = require('../controllers/review');
+const { postReview, getReviews, getUserHasLeftReview, getOneReview, putEditReview, deleteReview } = require('../controllers/review');
 const { checkAuth } = require('../middlewares/auth');
 
 const router = Router();
@@ -27,6 +27,7 @@ router.get('/:id/reviews/check-user', checkAuth(), getUserHasLeftReview);
 router.get('/:id/reviews', getReviews);
 router.get('/reviews/:id', getOneReview)
 router.put('/reviews/:id', putEditReview)
+router.delete('/reviews/:id', deleteReview)
 router.post('/:id/reviews', checkAuth(), postReview);
 
 

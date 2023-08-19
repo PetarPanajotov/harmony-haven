@@ -15,7 +15,6 @@ export class ReviewFormComponent implements OnInit {
   @Output() reviewListUpdated: EventEmitter<any> = new EventEmitter();
   reviewForm: any;
   user: any;
-  hasReview: boolean = false;
 
   gradeOptions: { value: number, text: string }[] = [
     { value: 10, text: 'Perfection' },
@@ -39,11 +38,6 @@ export class ReviewFormComponent implements OnInit {
       text: new FormControl(this.reviewToEdit ? this.reviewToEdit.text : ''),
     });
     this.user = this.userService.userInformation;
-
-    if (this.userService.isLogged && !this.reviewToEdit) {
-      this.destinationService.getIfUserHasReview(this.hotelId)
-        .subscribe((isUserHasReview) => this.hasReview = isUserHasReview)
-    };
   };
 
   autoExpand(event: any): void {
@@ -58,7 +52,6 @@ export class ReviewFormComponent implements OnInit {
       .subscribe((newReview) => {
         this.reviewList = [newReview, ...this.reviewList];
         this.reviewListUpdated.emit(this.reviewList)
-        this.hasReview = true;
       });
   };
   editReview(): void {
@@ -66,7 +59,7 @@ export class ReviewFormComponent implements OnInit {
     this.destinationService.editReview(this.reviewToEdit._id!, grade!, text!)
       .subscribe((editedReview) => {
         this.reviewList = this.reviewList.map((review:any) => review._id === editedReview._id? editedReview : review);
-        this.reviewListUpdated.emit(this.reviewList)
-      })
-  }
-}
+        this.reviewListUpdated.emit(this.reviewList);
+      });
+  };
+};

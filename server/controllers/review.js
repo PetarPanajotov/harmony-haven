@@ -1,4 +1,4 @@
-const { createReview, reviews, doesUserLeftReview, findReview, editReview } = require("../services/reviewService");
+const { createReview, reviews, doesUserLeftReview, findReview, editReview, removeReview } = require("../services/reviewService");
 const { ErrorMessage } = require("../utils/errorHandlerUtils");
 
 exports.postReview = async (req, res) => {
@@ -51,6 +51,18 @@ exports.putEditReview = async (req, res) => {
     } catch(error) {
         res.status(409)
             .send(ErrorMessage(error))
+    };
+};
+
+exports.deleteReview = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const data = await removeReview(id);
+        res.status(200)
+            .send(data);
+    } catch(error) {
+        res.status(409)
+            .send(ErrorMessage(error));
     };
 };
 
