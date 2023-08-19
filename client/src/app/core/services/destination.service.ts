@@ -90,6 +90,34 @@ export class DestinationService {
   ) {
     return this.http.get<any>(`http://localhost:3000/hotels/${hotelId}`)
   };
+  editHotel(
+    hotelId: string,
+    hotelName: string,
+    hotelLocation: string,
+    imgURL: string,
+    stars: any,
+    type: string,
+    price: any,
+    freeRooms: any,
+    description: string
+  ) {
+    return this.http.put<any>(`http://localhost:3000/hotels/${hotelId}`, {
+      hotelName,
+      hotelLocation,
+      imgURL,
+      stars,
+      type,
+      price,
+      freeRooms,
+      description
+    });
+  };
+
+  deleteHotel(
+    hotelId: string
+  ) {
+    return this.http.delete<any>(`http://localhost:3000/hotels/${hotelId}`)
+  }
   getIfUserHasReview(
     hotelId:string,
     ) {

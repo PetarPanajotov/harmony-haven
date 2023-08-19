@@ -11,6 +11,8 @@ const findAndEditDestination = (destiantionId, destinationName, destinationLocat
 const findAndDeleteDestination = (destiantionId) => Destination.findByIdAndDelete(destiantionId);
 const findHotelById = (hotelId) => Hotel.findById(hotelId);
 const findHotelByIdAndUpdate = (hotelId, options) => Hotel.findByIdAndUpdate(hotelId, options);
+const findAndEditHotel = (hotelId, data) => Hotel.findByIdAndUpdate(hotelId, data, {new: true});
+const findAndDeleteHotel = (hotelId) => Hotel.findByIdAndDelete(hotelId);
 const findUserById = (userId) => User.findById(userId);
 const findReviewByUserId = (userId) => Review.findOne({_ownerId: userId});
 const findReviewById = (reviewId) => Review.findById(reviewId);
@@ -25,6 +27,8 @@ module.exports = {
     findAndDeleteDestination,
     findHotelById,
     findHotelByIdAndUpdate,
+    findAndDeleteHotel,
+    findAndEditHotel,
     findUserById,
     findReviewByUserId,
     findReviewById,

@@ -10,11 +10,11 @@ export class ValidatorService {
     firstName: /^[a-zA-Z]+$/,
     lastName: /^[a-zA-Z]+$/,
     destinationName: /^[a-zA-Z\s]+$/,
-    destinationLocation: /^[a-zA-Z\s]+$/,
-    destinationImgURL: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
+    destinationLocation: /^[A-Z][a-zA-Z]+,\s[A-Z][a-zA-Z\s]+$/,
+    destinationImgURL: /(http(s?):)/,
     hotelName: /^[a-zA-Z\s]+$/,
-    hotelLocation: /^[A-Z][a-zA-Z]+,\s[A-Z][a-zA-Z]+$/,
-    hotelImgURL: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
+    hotelLocation: /^[A-Z][a-zA-Z]+,\s[A-Z][a-zA-Z\s]+$/,
+    hotelImgURL: /(http(s?):)/,
     hotelPrice: /^\d+(\.\d{1,2})?$/,
     hotelFreeRooms: /^(?:[1-9]\d{0,2}|1000)$/
   }
@@ -22,7 +22,8 @@ export class ValidatorService {
   
   patternValidator(pattern: RegExp, errorKey: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
+      const value = (control.value).toString();
+      
       const valid = value && value.match(pattern)
       return valid ? null : { [errorKey]: true };
     };

@@ -1,4 +1,4 @@
-const { findDestinationById, findHotelById } = require("../utils/dbFunctionsUtils")
+const { findDestinationById, findHotelById, findAndEditHotel, findAndDeleteHotel } = require("../utils/dbFunctionsUtils")
 const Hotel = require("../models/hotelModel");
 const Review = require("../models/reviewModel");
 
@@ -30,9 +30,20 @@ exports.hotels = async (destinationId) => {
     return destination;
 };
 
+exports.editHotel = async(hotelId, hotelName, hotelLocation, imgURL, stars, type, price, freeRooms, description) => {
+    const hotel = await findAndEditHotel(hotelId, {hotelName, hotelLocation, imgURL, stars, type, price, freeRooms, description}).populate('reviews')
+        .then((hotelBSON) => hotelBSON.toObject())
+    hotel.reviews = undefined;
+    return hotel
+};
+
 exports.findHotel = async (hotelId) => {
     const oneHotel = await findHotelById(hotelId).populate('reviews')
         .then((hotel) => hotel.toObject());
     oneHotel.reviews = undefined;
     return oneHotel;
 };
+exports.removeHotel = async(hotelId) => {
+    const hotel = findAndDeleteHotel(hotelId)
+    return hotel;
+}

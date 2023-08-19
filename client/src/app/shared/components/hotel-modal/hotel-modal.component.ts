@@ -12,32 +12,63 @@ import { ValidatorService } from 'src/app/core/services/validator.service';
 })
 export class HotelModalComponent implements OnInit {
   @Input() destination: Destination | undefined;
-  @Output() hotelListUpdated: EventEmitter<any> = new EventEmitter()
+  @Input() hotelToEdit: any | undefined;
+  @Output() hotelListUpdated: EventEmitter<any> = new EventEmitter();
+  @Output() updatedHotel: EventEmitter<any> = new EventEmitter()
   hotelForm: any = [];
 
   constructor(
     private modalService: ModalService,
     private destinationService: DestinationService,
     private validatorService: ValidatorService) { }
-    
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.hotelForm = new FormGroup({
-      hotelName: new FormControl("", [Validators.required, this.validatorService.customHotelNameValidator()]),
-      hotelLocation: new FormControl('', [Validators.required, this.validatorService.customHotelLocationValidator()]),
-      imgURL: new FormControl('', [Validators.required, this.validatorService.customHotelImgURLValidator()]),
-      stars: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
-      price: new FormControl('', [Validators.required, this.validatorService.customHotelPriceValidator()]),
-      freeRooms: new FormControl('', [Validators.required, this.validatorService.customHotelFreeRoomsValidator()]),
-      description: new FormControl('', [Validators.required, Validators.minLength(50)])
+      hotelName: new FormControl(this.hotelToEdit ? this.hotelToEdit.hotelName : "", [Validators.required, this.validatorService.customHotelNameValidator()]),
+      hotelLocation: new FormControl(this.hotelToEdit ? this.hotelToEdit.hotelLocation : "", [Validators.required, this.validatorService.customHotelLocationValidator()]),
+      imgURL: new FormControl(this.hotelToEdit ? this.hotelToEdit.imgURL : "", [Validators.required, this.validatorService.customHotelImgURLValidator()]),
+      stars: new FormControl(this.hotelToEdit ? this.hotelToEdit.stars : "", [Validators.required]),
+      type: new FormControl(this.hotelToEdit ? this.hotelToEdit.type : "", [Validators.required]),
+      price: new FormControl(this.hotelToEdit ? this.hotelToEdit.price : "", [Validators.required, this.validatorService.customHotelPriceValidator()]),
+      freeRooms: new FormControl(this.hotelToEdit ? this.hotelToEdit.freeRooms : "", [Validators.required, this.validatorService.customHotelFreeRoomsValidator()]),
+      description: new FormControl(this.hotelToEdit ? this.hotelToEdit.description : "", [Validators.required, Validators.minLength(50)])
     });
   };
 
   closeHotelModal(): void {
     this.modalService.closeModal();
+  };
+
+  editHotel(): void {
+    if (this.hotelForm.invalid) {
+      return
+    }
+    const {
+      hotelName,
+      hotelLocation,
+      imgURL,
+      stars,
+      type,
+      price,
+      freeRooms,
+      description
+    } = this.hotelForm.value
+
+    this.destinationService.editHotel(
+      this.hotelToEdit._id,
+      hotelName,
+      hotelLocation,
+      imgURL,
+      stars,
+      type,
+      price,
+      freeRooms,
+      description)
+      .subscribe(editedHotel => this.updatedHotel.emit(editedHotel))
   }
+
   createHotel(): void {
-    if(this.hotelForm.invalid) {
+    if (this.hotelForm.invalid) {
       return
     }
     const {

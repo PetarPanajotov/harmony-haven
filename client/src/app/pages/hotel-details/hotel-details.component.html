@@ -18,13 +18,17 @@
             <p>Location: {{hotel.hotelLocation}}</p>
             <p>Type: {{hotel.type}}</p>
             <p>Free Rooms: {{hotel.freeRooms}} rooms available</p>
-            <p>Price: {{hotel.price}} <span>per room</span></p>
+            <p>Price: ${{hotel.price}} <span>per room</span></p>
             <div class="hotel-details-rating">
                 <p>Rating: <span class="hotel-details-raiting-value">{{hotel.rating}}</span></p>
                 <p class="hotel-details-raiting-text">{{hotel.grade}}</p>
                 <p class="hotel-details-raiting-counts">({{hotel.reviewsCount}} Reviews)</p>
             </div>
-            <button>Book now!</button>
+            <div class="hotel-details-edit-delete-btns" *ngIf="userService.userInformation?.isAdmin">
+                <button class="buttons-options hotel-details-edit-btn" (click)="onEditClicked()">Edit</button>
+                <button class="buttons-options hotel-details-delete-btn" (click)="onDeleteClicked()">Delete</button>
+            </div>
+            <button class="buttons-options">Book now!</button>
         </div>
     </section>
     <section class="hotel-details-information-wrapper">
@@ -38,9 +42,9 @@
                 <p>{{hotel.description}}</p>
             </div>
         </div>
-        <app-reviews
-            [hotelId]="hotelId"
-            [hotelReviewsCount]="hotel.reviewsCount"
-        />
+        <app-reviews [hotelId]="hotelId" [hotelReviewsCount]="hotel.reviewsCount" />
     </section>
+    <app-hotel-modal *ngIf="(modalService.modalStatus$ | async)"
+        [hotelToEdit]="hotelToEdit"
+        (updatedHotel)="handleHotelUpdate($event)" />
 </main>

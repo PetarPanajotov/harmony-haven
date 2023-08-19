@@ -61,16 +61,35 @@
     font-size: 0.75em;
     align-self: center;
 }
-.hotel-details-booking button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #3498db;
+.hotel-details-edit-delete-btns {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+.hotel-details-edit-btn,
+.hotel-details-delete-btn {
+    flex: 1 1 10em;
+    color: white;
+}
+.hotel-details-edit-btn {
+    background-color: green;
+}
+.hotel-details-delete-btn {
+    background-color: red;
+}
+.buttons-options {
+    padding: 0.6em 0;
     color: #fff;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s;
+    border: none;
+    margin-top: 0.2em;
+}
+.hotel-details-booking > button {
+    display: block;
+    width: 100%;
+    background-color: #3498db;
     transition: background-color 0.3s;
     margin-top: auto;
 }
