@@ -10,7 +10,7 @@
             </svg>
             <h6>{{destination.destinationLocation}}</h6>
         </div>
-        <ng-container *ngIf="userService.isLogged && userService.userInformation.isAdmin">
+        <ng-container *ngIf="userService.isLogged && userService.userInformation.isAdmin && router.url !== '/'">
             <app-edit-icon (click)="onEditClicked($event)" />
             <app-delete-icon (click)="onDeleteClicked($event)" />
         </ng-container>

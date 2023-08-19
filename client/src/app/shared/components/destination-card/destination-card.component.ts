@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { DestinationService } from 'src/app/core/services/destination.service';
 import { UserService } from 'src/app/core/services/user.service';
 
@@ -12,10 +13,11 @@ export class DestinationCardComponent {
   @Input() destination: any;
   @Input() destinationList: any;
   @Output() detinationData: EventEmitter<any> = new EventEmitter();
-  @Output() destinationListUpdated: EventEmitter<any> = new EventEmitter()
+  @Output() destinationListUpdated: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private destinationService: DestinationService,
+    public router: Router,
     public userService: UserService) { }
 
   onEditClicked(event: Event): void {
