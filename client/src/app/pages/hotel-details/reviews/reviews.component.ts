@@ -10,20 +10,32 @@ export class ReviewsComponent implements OnInit {
   @Input() hotelId: any;
   @Input() hotelReviewsCount: any;
   reviews: any = [];
+  reviewToEdit: any;
   pagination = {
     offset: 0,
     limit: 5
-  }
+  };
 
   constructor(private destinationService: DestinationService) { }
 
   ngOnInit(): void {
     this.destinationService.getReviews(this.hotelId, this.pagination.offset, this.pagination.limit)
-      .subscribe((reviewData) => this.reviews = reviewData);
+      .subscribe((reviewData) => {
+        (this.reviews = reviewData).map((review:any) => review.editing = false)
+      });
   };
 
-  handleReviewListUpdate(updatedList: any) {
+  handleReviewListUpdate(updatedList: any, review?: any) {
     this.reviews = updatedList;
+    review.editing = false;
+  };
+
+  onEditClicked(review: any): void {
+    this.destinationService.getReviewById(review._id)
+      .subscribe((reviewData) => {
+        this.reviewToEdit = reviewData;
+        review.editing = true;
+      })
   };
 
   loadMoreReviews(): void {
