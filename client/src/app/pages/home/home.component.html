@@ -6,51 +6,18 @@
         <div class="image-text-inside">
             <div class="border"></div>
             <h3>Escape to Tranquility and Recharge Your Senses</h3>
-            <a href="">Explore now!</a>
+            <a routerLink="/destinations">Explore now!</a>
         </div>
     </section>
     <section class="lastest-offers">
         <div class="section-title">
             <div class="lastest-offers-border"> </div>
-            <h3>Lastest Offers</h3>
+            <h3>Lastest Destinations</h3>
             <div class="lastest-offers-border"></div>
         </div>
-        <div class="card-container">
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1688223367766-38daf84eb2fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=760&q=80"
-                        alt="">
-                </div>
-                <h5>Rome, Italy</h5>
-                <p>Immerse yourself in the eternal city of Rome, where ancient history intertwines with
-                    indulgent relaxation. Discover a haven of luxury spas offering rejuvenating treatments
-                    amidst breathtaking historical landmarks.</p>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://www.fodors.com/wp-content/uploads/2018/10/HERO_UltimateRome_Hero_shutterstock789412159.jpg"
-                        alt="">
-                </div>
-                <h5>Rome, Italy</h5>
-                <p>Immerse yourself in the eternal city of Rome, where ancient history intertwines with
-                    indulgent relaxation. Discover a haven of luxury spas offering rejuvenating treatments
-                    amidst breathtaking historical landmarks.</p>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://www.fodors.com/wp-content/uploads/2018/10/HERO_UltimateRome_Hero_shutterstock789412159.jpg"
-                        alt="">
-                </div>
-                <div class="card-information">
-                    <h5>Rome, Italy</h5>
-                    <p>Starting from: 220$</p>
-                    <div class="card-grade">
-                        <p>8.7</p>
-                        <p>Fabolous</p>
-                        <p>2,410 reviews</p>
-                    </div>
-                </div>
-            </div>
+        <div class="card-container" >
+            <app-destination-card *ngFor="let destination of destinationList"
+            [destination]="destination"/>
         </div>
     </section>
 </main>
