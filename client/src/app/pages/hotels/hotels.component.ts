@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DestinationService } from 'src/app/core/services/destination.service';
 import { ModalService } from 'src/app/core/services/modal.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { Destination } from 'src/app/core/types/destination';
 
 @Component({
@@ -11,7 +12,11 @@ import { Destination } from 'src/app/core/types/destination';
 })
 export class HotelsComponent implements OnInit {
   destination: Destination | undefined;
-  constructor(private route: ActivatedRoute, private destinationService: DestinationService, public modalService: ModalService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private destinationService: DestinationService,
+    public modalService: ModalService,
+    public userService: UserService) { }
   
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
