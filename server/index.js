@@ -6,13 +6,14 @@ const config = require('./config/config');
 const router = require('./routes/routes');
 const cookieParser = require('cookie-parser');
 const { logRequest } = require('./middlewares/logRequest');
+// origin: ['http://localhost:3000', 'http://localhost:4200']
 async function startServer() {
     try {
         await databaseInit()
         const app = express();
         app.use(cookieParser())
         app.use(cors({
-            origin: ['http://localhost:3000', 'http://localhost:4200'],
+            origin: ['https://harmony-haven.onrender.com/', 'https://harmony-haven-4e17a.web.app/'],
             credentials: true
         }
         ));
