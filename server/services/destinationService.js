@@ -3,14 +3,17 @@ const { findAllDestinations,
         findMatchingDestinations,
         findDestinationById,
         findAndEditDestination,
-        findAndDeleteDestination
+        findAndDeleteDestination,
+        findDestinationsWithPagination
     } = require('../utils/dbFunctionsUtils');
 
-exports.destinations = async(search) => {
-    if(search['search']) {
-        const query = search['search']
-        const matchingDestinations = await findMatchingDestinations(query)
+exports.destinations = async(search, offset, limit) => {
+    if(search) {
+        const matchingDestinations = await findMatchingDestinations(search)
         return matchingDestinations;
+    } else if(offset, limit){
+        const matchingDestinations = await findDestinationsWithPagination(offset, limit);
+        return matchingDestinations
     }
     const allDestinations = await findAllDestinations().sort({ createdAt: -1 });
     return allDestinations;

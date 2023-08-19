@@ -2,9 +2,9 @@ const { destinations, createDestination, findDestination, editDestination, remov
 const { ErrorMessage } = require("../utils/errorHandlerUtils");
 
 exports.getDestinations = async (req, res) => {
-    const search = req.query;
+    const {search, offset, limit} = req.query;
     try {
-        const data = await destinations(search);
+        const data = await destinations(search, offset, limit);
         res.status(200)
             .send(data);
     } catch (error) {

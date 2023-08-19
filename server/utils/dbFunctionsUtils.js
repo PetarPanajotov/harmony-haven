@@ -5,6 +5,7 @@ const Review = require('../models/reviewModel');
 
 const findAllDestinations = () => Destination.find({});
 const findMatchingDestinations = (query) => Destination.find({destinationName: { $regex: query, $options: 'i' } });
+const findDestinationsWithPagination = (offset, limit) => Destination.find().sort({'createdAt': -1}).skip(offset).limit(limit)
 const findDestinationById = (destinationId) => Destination.findById(destinationId);
 const findAndEditDestination = (destiantionId, destinationName, destinationLocation, imgURL) => Destination.findByIdAndUpdate(destiantionId, {destinationName, destinationLocation, imgURL}, {new:true})
 const findAndDeleteDestination = (destiantionId) => Destination.findByIdAndDelete(destiantionId);
@@ -15,6 +16,7 @@ const findReviewByUserId = (userId) => Review.findOne({_ownerId: userId});
 module.exports = {
     findAllDestinations,
     findMatchingDestinations,
+    findDestinationsWithPagination,
     findDestinationById,
     findAndEditDestination,
     findAndDeleteDestination,
