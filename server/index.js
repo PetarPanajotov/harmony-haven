@@ -14,7 +14,7 @@ async function startServer() {
         app.use(cookieParser())
         const allowedOrigins = [
             'https://harmony-haven-4e17a.web.app',
-            // Add more origins as needed
+            'http://localhost:4200'
         ];
 
         const corsOptions = {

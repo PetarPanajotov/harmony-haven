@@ -5,7 +5,11 @@ exports.postRegister = async (req, res) => {
     const { email, firstName, lastName, password, repeatPassword } = req.body;
     try {
         const data = await register(email, firstName, lastName, password, repeatPassword);
-        res.cookie('auth', data.token, { httpOnly: true, sameSite: 'none', secure: true });
+        if (process.env.NODE_ENV === 'production') {
+            res.cookie('auth', data.token, { httpOnly: true, sameSite: 'none', secure: true });
+        } else {
+            res.cookie('auth', data.token, { httpOnly: true});
+        }
         res.status(201)
             .send(data.user);
     } catch (error) {
@@ -18,6 +22,11 @@ exports.postLogin = async (req, res) => {
     const { email, password } = req.body;
     try {
         const data = await login(email, password);
+        if (process.env.NODE_ENV === 'production') {
+            res.cookie('auth', data.token, { httpOnly: true, sameSite: 'none', secure: true });
+        } else {
+            res.cookie('auth', data.token, { httpOnly: true});
+        }
         res.cookie('auth', data.token, { httpOnly: true, sameSite: 'none', secure: true });
         res.status(200)
             .send(data.user)
