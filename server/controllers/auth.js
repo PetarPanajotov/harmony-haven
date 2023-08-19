@@ -5,7 +5,7 @@ exports.postRegister = async (req, res) => {
     const { email, firstName, lastName, password, repeatPassword } = req.body;
     try {
         const data = await register(email, firstName, lastName, password, repeatPassword);
-        res.cookie('auth', data.token, { httpOnly: true });
+        res.cookie('auth', data.token, { httpOnly: true, sameSite: none });
         res.status(201)
             .send(data.user);
     } catch (error) {
@@ -18,7 +18,7 @@ exports.postLogin = async (req, res) => {
     const { email, password } = req.body;
     try {
         const data = await login(email, password);
-        res.cookie('auth', data.token, { httpOnly: true });
+        res.cookie('auth', data.token, { httpOnly: true, sameSite: none });
         res.status(200)
             .send(data.user)
     } catch (error) {
