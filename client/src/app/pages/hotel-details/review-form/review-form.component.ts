@@ -40,7 +40,7 @@ export class ReviewFormComponent implements OnInit {
     this.user = this.userService.userInformation;
 
     if (this.userService.isLogged) {
-      this.destinationService.getIfUserHasReview()
+      this.destinationService.getIfUserHasReview(this.hotelId)
         .subscribe((isUserHasReview) => this.hasReview = isUserHasReview)
     };
   };
