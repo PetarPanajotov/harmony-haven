@@ -30,13 +30,14 @@ exports.getReviews = async(req, res) => {
 };
 
 exports.getUserHasLeftReview = async(req, res) => {
+    const { id } = req.params;
     const {_id: userId} = req.user;
     try {
-        const data = await doesUserLeftReview(userId);
+        const data = await doesUserLeftReview(userId, id);
         res.status(200)
             .send(data);
     } catch(error) {
         res.status(404)
-            .semd(ErrorMessage(error));
+            .send(ErrorMessage(error));
     };
 };
