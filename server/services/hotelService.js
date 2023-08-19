@@ -12,7 +12,9 @@ exports.createHotel = async (id, hotelName, hotelLocation, imgURL, stars, type, 
 };
 
 exports.hotels = async (destinationId) => {
-    const destination = await findDestinationById(destinationId).populate({
+    const destination = await findDestinationById(destinationId)
+    .sort({ createdAt: -1 })
+    .populate({
         path: 'hotels',
         populate: {
             path: 'reviews'

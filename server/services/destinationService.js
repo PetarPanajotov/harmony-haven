@@ -12,7 +12,7 @@ exports.destinations = async(search) => {
         const matchingDestinations = await findMatchingDestinations(query)
         return matchingDestinations;
     }
-    const allDestinations = await findAllDestinations();
+    const allDestinations = await findAllDestinations().sort({ createdAt: -1 });
     return allDestinations;
 }
 

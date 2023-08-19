@@ -23,5 +23,7 @@ const destinationSchema = new mongoose.Schema({
     popular: {
         type: Boolean
     }
+}, {
+    timestamps: true
 });
 module.exports = mongoose.model('Destination', destinationSchema)

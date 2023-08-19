@@ -39,6 +39,8 @@ const hotelSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'Review'
     }]
+}, {
+    timestamps: true
 });
 //virtual property to calculate the rating based of the reviews
 hotelSchema.virtual('rating').get(function() {
