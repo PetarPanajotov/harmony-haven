@@ -12,10 +12,23 @@ async function startServer() {
         await databaseInit()
         const app = express();
         app.use(cookieParser())
-        app.use(cors({
-            credentials: true
-        }
-        ));
+        const allowedOrigins = [
+            'https://harmony-haven-4e17a.web.app',
+            // Add more origins as needed
+        ];
+
+        const corsOptions = {
+            origin: function (origin, callback) {
+                if (allowedOrigins.includes(origin) || !origin) {
+                    callback(null, true);
+                } else {
+                    callback(new Error('Not allowed by CORS'));
+                }
+            },
+            credentials: true,
+        };
+
+        app.use(cors(corsOptions));
         app.use(express.json());
         app.use(logRequest)
         app.use(router);
