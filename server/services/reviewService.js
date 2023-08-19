@@ -5,7 +5,10 @@ exports.createReview = async (hotelId, rating, text, userId) => {
     const newReview = new Review({rating, text, _ownerId: userId});
     await newReview.save();
     await findHotelByIdAndUpdate({_id: hotelId}, {$push: {reviews: newReview._id}});
-    return newReview;
+    return newReview.populate({
+        path: '_ownerId',
+        select: 'firstName lastName'
+    });
  };
 
 exports.reviews = async(hotelId, offset, limit) => {
@@ -13,7 +16,13 @@ exports.reviews = async(hotelId, offset, limit) => {
         path: 'reviews',
         options: {
             skip: offset,
-            limit: limit
+            limit: limit, 
+            sort: { createdAt: -1 }
+        },
+        populate: {
+            path: '_ownerId',
+            model: 'User',
+            select: 'firstName lastName'
         }
     });
     const reviews = hotel.reviews;
