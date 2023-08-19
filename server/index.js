@@ -13,7 +13,6 @@ async function startServer() {
         const app = express();
         app.use(cookieParser())
         app.use(cors({
-            origin: ['https://harmony-haven.onrender.com/', 'https://harmony-haven-4e17a.web.app/'],
             credentials: true
         }
         ));
