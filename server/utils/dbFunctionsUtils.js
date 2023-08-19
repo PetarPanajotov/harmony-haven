@@ -13,6 +13,8 @@ const findHotelById = (hotelId) => Hotel.findById(hotelId);
 const findHotelByIdAndUpdate = (hotelId, options) => Hotel.findByIdAndUpdate(hotelId, options);
 const findUserById = (userId) => User.findById(userId);
 const findReviewByUserId = (userId) => Review.findOne({_ownerId: userId});
+const findReviewById = (reviewId) => Review.findById(reviewId);
+const findAndEditReview = (reviewId, rating, text) => Review.findByIdAndUpdate(reviewId, {rating, text}, {new: true})
 module.exports = {
     findAllDestinations,
     findMatchingDestinations,
@@ -23,5 +25,7 @@ module.exports = {
     findHotelById,
     findHotelByIdAndUpdate,
     findUserById,
-    findReviewByUserId
+    findReviewByUserId,
+    findReviewById,
+    findAndEditReview
 }
