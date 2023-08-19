@@ -9,10 +9,17 @@ export class DestinationService {
 
   constructor(private http: HttpClient) { }
 
-  getDestinations(searchQuery?: string) {
+  getDestinations(
+    searchQuery?: string,
+    offset?: number,
+    limit?: number
+    ) {
     if (searchQuery) {
       return this.http.get(`http://localhost:3000/destinations?search=${searchQuery}`)
+    } else if (offset !== undefined && limit !== undefined) {
+      return this.http.get(`http://localhost:3000/destinations?offset=${offset}&limit=${limit}`)
     }
+
     return this.http.get('http://localhost:3000/destinations')
   };
 
@@ -83,8 +90,10 @@ export class DestinationService {
   ) {
     return this.http.get<any>(`http://localhost:3000/hotels/${hotelId}`)
   };
-  getIfUserHasReview() {
-    return this.http.get<any>('http://localhost:3000/reviews/check-user')
+  getIfUserHasReview(
+    hotelId:string,
+    ) {
+    return this.http.get<any>(`http://localhost:3000/${hotelId}/reviews/check-user`)
   }
   getReviews(
     hotelId: string,
