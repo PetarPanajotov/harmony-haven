@@ -16,10 +16,10 @@
             <div class="review-content">
                 <div class="review-avatar-info">
                     <div class="review-avatar-info-user">
-                        <p class="review-avatar-info-username">Plamen Minkov</p>
+                        <p class="review-avatar-info-username">{{review._ownerId?.firstName}} {{review._ownerId?.lastName}}</p>
                         <p class="review-avatar-info-rating">{{review.rating}}</p>
                     </div>
-                    <p>3 days ago</p>
+                    <p>{{review.createdAt | timestamp}}</p>
                 </div>
                 <div class="review-text">{{review.text}}</div>
             </div>
