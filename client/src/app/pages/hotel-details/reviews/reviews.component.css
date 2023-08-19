@@ -1,5 +1,7 @@
 @import '(../../../../../shared/styles/review-card.css';
-
+.review-form-container {
+    width: 100%;
+}
 .reviews-title {
     display: flex;
     flex-wrap: wrap;
@@ -33,6 +35,18 @@
     color: white;
     padding: 0.1em;
 }
+.review-options {
+    display: flex;
+    gap: 0.5em;
+    color: blue;
+    text-decoration: underline;
+    padding-top: 0.3em;
+}
+.review-options > p {
+    font-size: 0.7em;
+    cursor: pointer;
+}
+
 .review-load-more button {
     width: 100%;
     padding: 0.2em 0;

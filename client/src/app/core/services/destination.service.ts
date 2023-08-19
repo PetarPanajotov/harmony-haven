@@ -103,6 +103,11 @@ export class DestinationService {
     return this.http.get<any>(`http://localhost:3000/${hotelId}/reviews?offset=${offset}&limit=${limit}`)
   };
   //reviews
+  getReviewById(
+    reviewId: string
+  ) {
+    return this.http.get<any>(`http://localhost:3000/reviews/${reviewId}`)
+  }
   createReview(
     hotelId: string,
     rating: number,
@@ -113,5 +118,15 @@ export class DestinationService {
       text
     });
   };
+  editReview(
+    reviewId: string,
+    rating: number,
+    text: string
+  ) {
+    return this.http.put<any>(`http://localhost:3000/reviews/${reviewId}`, {
+      rating,
+      text
+    })
+  }
 };
 

@@ -10,7 +10,8 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class ReviewFormComponent implements OnInit {
   @Input() hotelId: any;
-  @Input() reviewList: any
+  @Input() reviewList: any;
+  @Input() reviewToEdit: any | undefined;
   @Output() reviewListUpdated: EventEmitter<any> = new EventEmitter();
   reviewForm: any;
   user: any;
@@ -34,12 +35,12 @@ export class ReviewFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.reviewForm = new FormGroup({
-      grade: new FormControl(''),
-      text: new FormControl(''),
+      grade: new FormControl(this.reviewToEdit ? this.reviewToEdit.rating : ''),
+      text: new FormControl(this.reviewToEdit ? this.reviewToEdit.text : ''),
     });
     this.user = this.userService.userInformation;
 
-    if (this.userService.isLogged) {
+    if (this.userService.isLogged && !this.reviewToEdit) {
       this.destinationService.getIfUserHasReview(this.hotelId)
         .subscribe((isUserHasReview) => this.hasReview = isUserHasReview)
     };
@@ -52,7 +53,7 @@ export class ReviewFormComponent implements OnInit {
   };
 
   createReview(): void {
-    const { grade, text } = this.reviewForm.value
+    const { grade, text } = this.reviewForm.value;
     this.destinationService.createReview(this.hotelId!, grade!, text!)
       .subscribe((newReview) => {
         this.reviewList = [newReview, ...this.reviewList];
@@ -60,4 +61,12 @@ export class ReviewFormComponent implements OnInit {
         this.hasReview = true;
       });
   };
-};
+  editReview(): void {
+    const { grade, text } = this.reviewForm.value;
+    this.destinationService.editReview(this.reviewToEdit._id!, grade!, text!)
+      .subscribe((editedReview) => {
+        this.reviewList = this.reviewList.map((review:any) => review._id === editedReview._id? editedReview : review);
+        this.reviewListUpdated.emit(this.reviewList)
+      })
+  }
+}
