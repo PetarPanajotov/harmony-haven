@@ -25,6 +25,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { ReviewsComponent } from './pages/hotel-details/reviews/reviews.component';
 import { ReviewFormComponent } from './pages/hotel-details/review-form/review-form.component';
 import { EditIconComponent } from './shared/components/destination-card/edit-icon/edit-icon.component';
+import { TimestampPipe } from './shared/pipes/timestamp.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { EditIconComponent } from './shared/components/destination-card/edit-ico
     ReviewsComponent,
     ReviewFormComponent,
     EditIconComponent,
+    TimestampPipe,
   ],
   imports: [
     BrowserModule,
