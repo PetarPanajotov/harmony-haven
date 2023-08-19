@@ -14,6 +14,7 @@ export class ReviewsComponent implements OnInit {
     offset: 0,
     limit: 5
   }
+
   constructor(private destinationService: DestinationService) { }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class ReviewsComponent implements OnInit {
     this.pagination.offset += 5;
     this.destinationService.getReviews(this.hotelId, this.pagination.offset, this.pagination.limit)
       .subscribe((reviewData) => {
-        this.reviews.push(...reviewData)});
-  };
-
+        this.reviews.push(...reviewData)
+      });
+  };  
 };
