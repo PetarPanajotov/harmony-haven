@@ -23,7 +23,7 @@ router.post('/:id/hotels', postHotel);
 router.get('/:id/hotels', getHotels);
 router.get('/hotels/:id', getOneHotel)
 
-router.get('/reviews/check-user', checkAuth(), getUserHasLeftReview)
+router.get('/:id/reviews/check-user', checkAuth(), getUserHasLeftReview)
 router.get('/:id/reviews', getReviews)
 router.post('/:id/reviews', checkAuth(), postReview);
 

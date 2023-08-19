@@ -29,7 +29,8 @@ exports.reviews = async(hotelId, offset, limit) => {
     return reviews;
 };
 
-exports.doesUserLeftReview = async(userId) => {
-    const isReview = !!await findReviewByUserId(userId)
+exports.doesUserLeftReview = async(userId, hotelId) => {
+    const oneHotel = await findHotelById(hotelId).populate('reviews')
+    const isReview = oneHotel.reviews.toObject().some(review => review._ownerId?.toString() === userId.toString())
     return isReview
 };
