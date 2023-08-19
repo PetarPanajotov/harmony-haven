@@ -11,7 +11,12 @@ export class ValidatorService {
     lastName: /^[a-zA-Z]+$/,
     destinationName: /^[a-zA-Z\s]+$/,
     destinationLocation: /^[a-zA-Z\s]+$/,
-    destinationImgURL: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/
+    destinationImgURL: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
+    hotelName: /^[a-zA-Z\s]+$/,
+    hotelLocation: /^[A-Z][a-zA-Z]+,\s[A-Z][a-zA-Z]+$/,
+    hotelImgURL: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
+    hotelPrice: /^\d+(\.\d{1,2})?$/,
+    hotelFreeRooms: /^(?:[1-9]\d{0,2}|1000)$/
   }
   constructor() { }
   
@@ -53,4 +58,20 @@ export class ValidatorService {
   customDestinationImgURLValidator(): ValidatorFn {
     return this.patternValidator(this.validationPatterns.destinationImgURL, 'customDestinationImgURL')
   };
+  //create hotel and edit validators
+  customHotelNameValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.hotelName, 'customHotelName')
+  };
+  customHotelLocationValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.hotelLocation, 'customHotelLocation')
+  };
+  customHotelImgURLValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.hotelImgURL, 'customHotelImgURL')
+  };
+  customHotelPriceValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.hotelPrice, 'customHotelPrice');
+  };
+  customHotelFreeRoomsValidator(): ValidatorFn {
+    return this.patternValidator(this.validationPatterns.hotelFreeRooms, 'customHotelFreeRooms')
+  }
 };

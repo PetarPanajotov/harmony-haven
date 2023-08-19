@@ -1,8 +1,9 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { ModalService } from 'src/app/core/services/modal.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DestinationService } from 'src/app/core/services/destination.service';
 import { Destination } from 'src/app/core/types/destination';
+import { ValidatorService } from 'src/app/core/services/validator.service';
 
 @Component({
   selector: 'app-hotel-modal',
@@ -12,20 +13,23 @@ import { Destination } from 'src/app/core/types/destination';
 export class HotelModalComponent implements OnInit {
   @Input() destination: Destination | undefined;
   @Output() hotelListUpdated: EventEmitter<any> = new EventEmitter()
-  hotelForm: any;
+  hotelForm: any = [];
 
-  constructor(private modalService: ModalService, private destinationService: DestinationService) { }
-
-  ngOnInit(): void {
+  constructor(
+    private modalService: ModalService,
+    private destinationService: DestinationService,
+    private validatorService: ValidatorService) { }
+    
+    ngOnInit(): void {
     this.hotelForm = new FormGroup({
-      hotelName: new FormControl(''),
-      hotelLocation: new FormControl(''),
-      imgURL: new FormControl(''),
-      stars: new FormControl(''),
-      type: new FormControl(''),
-      price: new FormControl(''),
-      freeRooms: new FormControl(''),
-      description: new FormControl('')
+      hotelName: new FormControl("", [Validators.required, this.validatorService.customHotelNameValidator()]),
+      hotelLocation: new FormControl('', [Validators.required, this.validatorService.customHotelLocationValidator()]),
+      imgURL: new FormControl('', [Validators.required, this.validatorService.customHotelImgURLValidator()]),
+      stars: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required, this.validatorService.customHotelPriceValidator()]),
+      freeRooms: new FormControl('', [Validators.required, this.validatorService.customHotelFreeRoomsValidator()]),
+      description: new FormControl('', [Validators.required, Validators.minLength(50)])
     });
   };
 
@@ -33,6 +37,9 @@ export class HotelModalComponent implements OnInit {
     this.modalService.closeModal();
   }
   createHotel(): void {
+    if(this.hotelForm.invalid) {
+      return
+    }
     const {
       hotelName,
       hotelLocation,

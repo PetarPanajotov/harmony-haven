@@ -54,10 +54,10 @@ export class DestinationService {
     hotelName: string,
     hotelLocation: string,
     imgURL: string,
-    stars: number,
+    stars: any,
     type: string,
-    price: number,
-    freeRooms: number,
+    price: any,
+    freeRooms: any,
     description: string
   ) {
     return this.http.post<any>(`http://localhost:3000/${destinationId}/hotels`, {
