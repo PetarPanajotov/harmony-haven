@@ -52,7 +52,7 @@ exports.getMe = async (req, res) => {
 };
 exports.postLogout = async (req, res) => {
     const token = req.cookies;
-    res.clearCookie('auth')
+    res.clearCookie('auth', { httpOnly: true, sameSite: 'none', secure: true })
         .status(204)
         .send('Logged out!')
 }
