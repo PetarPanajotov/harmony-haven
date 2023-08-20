@@ -28,7 +28,8 @@
                 <button class="buttons-options hotel-details-edit-btn" (click)="onEditClicked()">Edit</button>
                 <button class="buttons-options hotel-details-delete-btn" (click)="onDeleteClicked()">Delete</button>
             </div>
-            <button class="buttons-options">Book now!</button>
+            <button class="buttons-options" *ngIf="userService.isLogged && !userService.userInformation?.isAdmin">Book now!</button>
+            <p class="not-logged" *ngIf="!userService.isLogged">Please <a routerLink="/login">login</a> to book</p>
         </div>
     </section>
     <section class="hotel-details-information-wrapper">

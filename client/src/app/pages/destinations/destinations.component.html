@@ -22,10 +22,6 @@
                 (detinationData)="onDestinationEdit($event)"
                 (destinationListUpdated)="handleDestinationListUpdate($event)">
             </app-destination-card>
-            
-            <app-add-destination-card *ngIf="userService.isLogged && userService.userInformation.isAdmin"
-                (createDestinationClicked)="onDestinationCreate($event)">
-            </app-add-destination-card>
         </div>
         <div class="destinations-cards-title-wrapper">
             <div class="destinations-cards-title-border"></div>
@@ -33,15 +29,15 @@
             <div class="destinations-cards-title-border"></div>
         </div>
         <div class="destinations-cards-wrapper">
+            <app-add-destination-card *ngIf="userService.isLogged && userService.userInformation.isAdmin"
+                (createDestinationClicked)="onDestinationCreate($event)">
+            </app-add-destination-card>
             <app-destination-card *ngFor="let destination of destinationList | popularFilter: false"
                 [destination]="destination"
                 [destinationList]="destinationList"
                 (detinationData)="onDestinationEdit($event)"
                 (destinationListUpdated)="handleDestinationListUpdate($event)">
             </app-destination-card>
-            <app-add-destination-card *ngIf="userService.isLogged && userService.userInformation.isAdmin"
-                (createDestinationClicked)="onDestinationCreate($event)">
-            </app-add-destination-card>
         </div>
         <ng-container *ngIf="(modalService.modalStatus$ | async) && isCreating; else editModal">
             <app-destination-modal

@@ -46,7 +46,15 @@
     font-size: 0.7em;
     cursor: pointer;
 }
-
+.review-card-not-logged {
+    text-align: center;
+}
+.review-card-not-logged-text p{
+    font-size: 1.4em;
+}
+.review-card-not-logged-text a {
+    font-size: inherit;
+}
 .review-load-more button {
     width: 100%;
     padding: 0.2em 0;

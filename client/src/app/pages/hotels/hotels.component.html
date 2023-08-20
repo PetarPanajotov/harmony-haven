@@ -5,7 +5,7 @@
                 alt="">
         </div>
         <h2>{{destination.destinationName}}</h2>
-        <div class="destination-selected-hotels-fillter-wrapper">
+        <!-- <div class="destination-selected-hotels-fillter-wrapper">
             <div class="destination-selected-hotels-fillter-type">
                 <h4>Type</h4>
                 <input class="destination-selected-hotels-fillter-input" type="text" />
@@ -18,7 +18,7 @@
                 <h4>Date</h4>
                 <input class="destination-selected-hotels-fillter-input" type="date" />
             </div>
-        </div>
+        </div> -->
     </section>
     <section class="destination-selected-hotel-cards-wrapper">
         <app-add-hotel-card *ngIf="userService.isLogged && userService.userInformation.isAdmin"/>

@@ -40,6 +40,11 @@
             [hotelId]="hotelId" 
             [reviewList]="reviews"
             (reviewListUpdated)="handleReviewListUpdate($event)" />
+            <div class="review-card-not-logged" *ngIf="!userService.isLogged">
+                <div class="review-card-not-logged-text">
+                    <p>Please <a routerLink="/login">login</a> to leave a review.</p>
+                </div>
+            </div>
         <div class="review-load-more" *ngIf="hotelReviewsCount > reviews.length">
             <button (click)="loadMoreReviews()">Load more</button>
         </div>
