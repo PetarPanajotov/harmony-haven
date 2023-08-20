@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Destination } from '../types/destination';
-
+import { api } from 'src/app/shared/constants';
 @Injectable({
   providedIn: 'root'
 })
 export class DestinationService {
-
   constructor(private http: HttpClient) { }
 
   getDestinations(
@@ -15,12 +14,12 @@ export class DestinationService {
     limit?: number
     ) {
     if (searchQuery) {
-      return this.http.get(`http://localhost:3000/destinations?search=${searchQuery}`)
+      return this.http.get(api + `destinations?search=${searchQuery}`)
     } else if (offset !== undefined && limit !== undefined) {
-      return this.http.get(`http://localhost:3000/destinations?offset=${offset}&limit=${limit}`)
+      return this.http.get(api + `destinations?offset=${offset}&limit=${limit}`)
     }
 
-    return this.http.get('http://localhost:3000/destinations')
+    return this.http.get(api + `destinations`)
   };
 
   createDestination(
@@ -28,14 +27,14 @@ export class DestinationService {
     destinationLocation: string,
     imgURL: string
   ) {
-    return this.http.post<any>('http://localhost:3000/destinations', {
+    return this.http.post<any>(api + `destinations`, {
       destinationName,
       destinationLocation,
       imgURL
     });
   };
   getDestinationById(destinationId: string) {
-    return this.http.get<Destination>(`http://localhost:3000/destinations/${destinationId}`)
+    return this.http.get<Destination>(api + `destinations/${destinationId}`)
   };
 
   editDestination(
@@ -44,7 +43,7 @@ export class DestinationService {
     destinationLocation: string,
     imgURL: string,
   ) {
-    return this.http.put<any>(`http://localhost:3000/destinations/${destinationId}`, {
+    return this.http.put<any>(api + `destinations/${destinationId}`, {
       destinationName,
       destinationLocation,
       imgURL
@@ -53,7 +52,7 @@ export class DestinationService {
   deleteDestination(
     destinationId: string
   ) {
-    return this.http.delete<any>(`http://localhost:3000/destinations/${destinationId}`)
+    return this.http.delete<any>(api + `destinations/${destinationId}`)
   }
 //hotels
   createHotel(
@@ -67,7 +66,7 @@ export class DestinationService {
     freeRooms: any,
     description: string
   ) {
-    return this.http.post<any>(`http://localhost:3000/${destinationId}/hotels`, {
+    return this.http.post<any>(api + `${destinationId}/hotels`, {
       hotelName,
       hotelLocation,
       imgURL,
@@ -82,13 +81,13 @@ export class DestinationService {
   getHotels(
     destinationId: string
   ) {
-    return this.http.get<any>(`http://localhost:3000/${destinationId}/hotels`)
+    return this.http.get<any>(api + `${destinationId}/hotels`)
   };
 
   getHotelById(
     hotelId: string,
   ) {
-    return this.http.get<any>(`http://localhost:3000/hotels/${hotelId}`)
+    return this.http.get<any>(api + `hotels/${hotelId}`)
   };
   editHotel(
     hotelId: string,
@@ -101,7 +100,7 @@ export class DestinationService {
     freeRooms: any,
     description: string
   ) {
-    return this.http.put<any>(`http://localhost:3000/hotels/${hotelId}`, {
+    return this.http.put<any>(api + `hotels/${hotelId}`, {
       hotelName,
       hotelLocation,
       imgURL,
@@ -116,32 +115,32 @@ export class DestinationService {
   deleteHotel(
     hotelId: string
   ) {
-    return this.http.delete<any>(`http://localhost:3000/hotels/${hotelId}`)
+    return this.http.delete<any>(api + `hotels/${hotelId}`)
   }
   getIfUserHasReview(
     hotelId:string,
     ) {
-    return this.http.get<any>(`http://localhost:3000/${hotelId}/reviews/check-user`)
+    return this.http.get<any>(api + `${hotelId}/reviews/check-user`)
   }
   getReviews(
     hotelId: string,
     offset: number,
     limit: number
   ) {
-    return this.http.get<any>(`http://localhost:3000/${hotelId}/reviews?offset=${offset}&limit=${limit}`)
+    return this.http.get<any>(api + `${hotelId}/reviews?offset=${offset}&limit=${limit}`)
   };
   //reviews
   getReviewById(
     reviewId: string
   ) {
-    return this.http.get<any>(`http://localhost:3000/reviews/${reviewId}`)
+    return this.http.get<any>(api + `reviews/${reviewId}`)
   }
   createReview(
     hotelId: string,
     rating: number,
     text: string
   ) {
-    return this.http.post<any>(`http://localhost:3000/${hotelId}/reviews`, {
+    return this.http.post<any>(api + `${hotelId}/reviews`, {
       rating,
       text
     });
@@ -151,7 +150,7 @@ export class DestinationService {
     rating: number,
     text: string
   ) {
-    return this.http.put<any>(`http://localhost:3000/reviews/${reviewId}`, {
+    return this.http.put<any>(api + `reviews/${reviewId}`, {
       rating,
       text
     })
@@ -159,7 +158,7 @@ export class DestinationService {
   deleteReview(
     reviewId: string
   ) {
-    return this.http.delete<any>(`http://localhost:3000/reviews/${reviewId}`)
+    return this.http.delete<any>(api + `reviews/${reviewId}`)
   }
 };
 

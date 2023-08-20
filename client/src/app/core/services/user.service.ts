@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../types/users';
-import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { api } from 'src/app/shared/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   checkIfUserHasSession(): any {
-    return this.http.get<User>('http://localhost:3000/me')
+    return this.http.get<User>(api + `me`)
       .subscribe({
         next: (user) => this.user = user,
         error: (error) => console.log(error.error)
@@ -35,7 +35,7 @@ export class UserService {
     password: string,
     repeatPassword: string
   ) {
-    return this.http.post<User>('http://localhost:3000/register', {
+    return this.http.post<User>(api + `register`, {
       email,
       firstName,
       lastName,
@@ -50,7 +50,7 @@ export class UserService {
     email: string,
     password: string
   ) {
-    return this.http.post<User>('http://localhost:3000/login', {
+    return this.http.post<User>(api + `login`, {
       email,
       password
     }).pipe(tap((user) => {
@@ -59,7 +59,7 @@ export class UserService {
   }
 
   logout() {
-    return this.http.post('http://localhost:3000/logout', {})
+    return this.http.post(api + `logout`, {})
       .pipe(tap(() => {
         this.user = undefined;
       }));
