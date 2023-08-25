@@ -3,6 +3,7 @@ Harmony Haven is a web application developed using Angular as a part of the Soft
 
 ## Deployment
 The application is deployed in Firebase and Renderer. https://harmony-haven-4e17a.web.app/
+Since I'am using the free tier on renderer, there will be loading time ~1-2 mins on initial open. This occurs only once, if the site is not used ~15-20mins.
 
 ## Technologies Used
 - Angular: The front-end of Harmony Haven is developed using Angular, a popular TypeScript-based web application framework.
