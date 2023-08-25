@@ -2,7 +2,7 @@
 Harmony Haven is a web application developed using Angular as a part of the SoftUni course defense on August 20, 2023. This platform is designed to provide users with the ability to explore and discover their dream travel destinations while enabling them to select and book hotels.
 
 ## Deployment
-The application will be deployed soon. This will be changed!
+The application is deployed in Firebase and Renderer. https://harmony-haven-4e17a.web.app/
 
 ## Technologies Used
 - Angular: The front-end of Harmony Haven is developed using Angular, a popular TypeScript-based web application framework.
